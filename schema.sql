@@ -1,4 +1,4 @@
-<?
+<?php
 // 이 파일은 제틱스 보드에서 사용하는 테이블의 스키마정보를 가지고 있습니다.
 // 이 파일을 수정시에는 조심하여 주시기바랍니다.
 
@@ -120,9 +120,9 @@ $group_table_schema = "
     use_birth char(1) default 0,
     use_picture char(1) default 0,
 
-    KEY name (name), 
-    KEY member_num (member_num), 
-    KEY board_num (board_num), 
+    KEY name (name),
+    KEY member_num (member_num),
+    KEY board_num (board_num),
     KEY is_open (is_open)
     )
 
@@ -131,7 +131,7 @@ $group_table_schema = "
 //////////////////////////////////////////////////////////////////////////
 // 게시판 관리자 테이블
 //////////////////////////////////////////////////////////////////////////
-    
+
 $admin_table_schema = "
 
   create table $admin_table (
@@ -197,8 +197,8 @@ $admin_table_schema = "
    avoid_tag text,
    avoid_ip text,
 
-   KEY group_no (group_no), 
-   KEY total_article (total_article), 
+   KEY group_no (group_no),
+   KEY total_article (total_article),
    KEY name (name)
    )
 
@@ -220,7 +220,7 @@ $board_table_main_schema ="
     depth int(10) unsigned default 0 not null,
 
     prev_no int(20) default 0 not null,
-    next_no int(20) default 0 not null, 
+    next_no int(20) default 0 not null,
 
     father int(20) default 0 not null,
     child int(20) default 0 not null,
@@ -275,7 +275,7 @@ $board_table_main_schema ="
 
 
 /////////////////////////////////////////////////////////////////////////////////
-// 간단한 답글 테이블 
+// 간단한 답글 테이블
 /////////////////////////////////////////////////////////////////////////////////
 
 $board_comment_schema ="
@@ -337,5 +337,5 @@ $send_memo_table_schema = "
     readed char(1) default 0 not null,
     reg_date int(13) not null,
     key user_id(member_no),
-    key readed (readed),                                                                          
+    key readed (readed),
     key reg_date (reg_date))";

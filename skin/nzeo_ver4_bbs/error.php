@@ -10,7 +10,7 @@
 	</td>
 </tr>
 </table>
-<?
+<?php
   if(!$url)
   {
 ?>
@@ -18,7 +18,7 @@
   <br>
   <center><a href=# onclick=history.back() onfocus=blur()><font class=list_han>이전 화면</font></a>
 
-<?
+<?php
   }
   else
   {
@@ -26,7 +26,7 @@
 	<br>
   <div align=center><a href=# onclick=location.href="<?echo $url;?>" onfocus=blur()><font class=list_han>페이지 이동</font></a>
 
-<?
+<?php
   }
 ?>
 </form>

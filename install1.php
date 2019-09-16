@@ -1,4 +1,4 @@
-<?
+<?php
 	include"lib.php";
 	head();
 	if(file_exists("config.php")) error("이미 config.php가 생성되어 있습니다.<br><br>재설치하려면 해당 파일을 지우세요");
@@ -27,7 +27,7 @@
   }
   return true;
  }
-</script> 
+</script>
 <body bgcolor=#000000 text=#ffffff>
 <br><br><br>
 <div align=center>
@@ -36,7 +36,7 @@
   <td height=30 colspan=3><img src=images/inst_top.gif></td>
 </tr>
 <tr>
-  <td> 
+  <td>
     <br>
     <img src=images/inst_step2.gif>
   </td>
@@ -76,6 +76,6 @@
 </tr>
 </table>
 
-<?
+<?php
 	foot();
 ?>

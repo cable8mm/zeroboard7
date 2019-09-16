@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -42,7 +42,7 @@
 	head("bgcolor=white","script_memo.php");
 ?>
 
-<?
+<?php
 if($data[no]&&($data[openinfo]||$member[is_admin]==1)) {
 ?>
 
@@ -78,14 +78,14 @@ if($data[no]&&($data[openinfo]||$member[is_admin]==1)) {
   <tr><td align=right valign=top><img src=images/t.gif height=1><br><img src=images/vi_photo.gif align=absmiddle>&nbsp;&nbsp;</td><td align=left>&nbsp;<img src="<?=$data[picture]?>" border=0></td></tr>
         <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
-        </tr> 
+        </tr>
 <? } ?>
 
 
   <tr>
      <td width=25% align=right><img src=images/memo_id.gif align=absmiddle>&nbsp;&nbsp;</td>
      <td align=left><img src="images/t.gif" width="10" height="3"><br><b><?=del_html($data[user_id])?></b></td>
-  </tr>        
+  </tr>
         <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
         </tr>
@@ -230,10 +230,10 @@ if($data[no]&&($data[openinfo]||$member[is_admin]==1)) {
 <tr><td align=right><a href=JavaScript:window.close()><img src="images/memo_close.gif" width="69" height="25" border="0"></a></tD></tr>
 </table>
 
-<?
+<?php
  } else Error("정보가 공개되어 있지 않습니다", "window.close");
 ?>
 
-<?
+<?php
 	foot();
 ?>

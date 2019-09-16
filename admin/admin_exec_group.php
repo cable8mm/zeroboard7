@@ -1,4 +1,4 @@
-<?
+<?php
 	function del_member($no) {
 		global $group_no, $member_table, $get_memo_table,  $send_memo_table,$admin_table, $t_board, $t_comment, $connect, $group_table, $member;
 
@@ -14,7 +14,7 @@
 
 		// 그룹테이블에서 회원수 -1
 		@mysql_query("update $group_table set member_num=member_num-1 where no = '$group_no'") or error(mysql_error());
-	
+
 		// 이름 그림, 아이콘, 이미지 박스 사용용량 파일 삭제
 		@z_unlink("icon/private_name/".$no.".gif");
 		@z_unlink("icon/private_icon/".$no.".gif");
@@ -93,7 +93,7 @@
 		//DB에 입력
 		@mysql_query("update $group_table set
 						use_hobby='$use_hobby',name='$name',is_open='$is_open' $icon_sql ,use_join='$use_join',join_return_url='$join_return_url',use_icon='$use_icon',
-						header='$header',footer='$footer',footer_url='$footer_url',header_url='$header_url' 
+						header='$header',footer='$footer',footer_url='$footer_url',header_url='$header_url'
 						where no='$group_no'") or Error("그룹수정 에러가 났습니다");
 		movepage("$PHP_SELF?exec=view_group&group_no=$group_no&exec=modify_group");
 	}
@@ -139,19 +139,19 @@
 			@mysql_query("delete from $admin_table where group_no='$group_no'");
 		}
 
-		// 그룹삭제                                                                                                
+		// 그룹삭제
 		@mysql_query("delete from $group_table where no='$group_no'") or Error("그룹삭제시 에러가 발생하였습니다");
-                                                                                                              
-		movepage("$PHP_SELF");                                                                                     
-	}                                                                                                           
-	// 가입양식 변경                                                                                            
-	elseif($exec=="modify_member_join_ok")                                                                      {                                                                                                           
-		mysql_query("update $group_table set join_level='$join_level',use_icq='$use_icq',use_aol='$use_aol',use_msn='$use_msn',   
-		use_jumin='$use_jumin',use_comment='$use_comment',use_job='$use_job',use_hobby='$use_hobby',          
+
+		movepage("$PHP_SELF");
+	}
+	// 가입양식 변경
+	elseif($exec=="modify_member_join_ok")                                                                      {
+		mysql_query("update $group_table set join_level='$join_level',use_icq='$use_icq',use_aol='$use_aol',use_msn='$use_msn',
+		use_jumin='$use_jumin',use_comment='$use_comment',use_job='$use_job',use_hobby='$use_hobby',
 		use_home_address='$use_home_address',use_home_tel='$use_home_tel',use_office_address='$use_office_address',
-		use_office_tel='$use_office_tel',use_handphone='$use_handphone',use_mailing='$use_mailing',          
-		use_birth='$use_birth',use_picture='$use_picture' where no='$group_no'") or error(mysql_error());              
-		movepage("$PHP_SELF?exec=modify_member_join&group_no=$group_no");                                                  
-	}    
+		use_office_tel='$use_office_tel',use_handphone='$use_handphone',use_mailing='$use_mailing',
+		use_birth='$use_birth',use_picture='$use_picture' where no='$group_no'") or error(mysql_error());
+		movepage("$PHP_SELF?exec=modify_member_join&group_no=$group_no");
+	}
 
 ?>

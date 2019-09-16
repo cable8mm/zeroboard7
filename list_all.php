@@ -1,4 +1,4 @@
-<?
+<?php
 /**********************************************************************************
  * 공통 파일 include
  *********************************************************************************/
@@ -17,7 +17,7 @@
 
 	if(!$is_admin&&$exec!="view_all") Error("사용권한이 없습니다","login.php?id=$id&page=$page&page_num=$page_num&category=$category&keykind=$keykind&keyword=$keyword&no=$no&file=zboard.php");
 
-	$select_list=$selected; 
+	$select_list=$selected;
 	$selected=explode(";",$selected);
 
 	if($exec=="copy_all") $_kind = "복사";
@@ -33,10 +33,10 @@
 
 		$reg_date = time();
 
-		mysql_query("insert into $get_memo_table (member_no,member_from,subject,memo,readed,reg_date) 
+		mysql_query("insert into $get_memo_table (member_no,member_from,subject,memo,readed,reg_date)
 					values ('$to','$from','$subject','$memo',1,'$reg_date')") or error(mysql_error());
 
-		mysql_query("insert into $send_memo_table (member_to,member_no,subject,memo,readed,reg_date) 
+		mysql_query("insert into $send_memo_table (member_to,member_no,subject,memo,readed,reg_date)
 					values ('$to','$from','$subject','$memo',1,'$reg_date')") or error(mysql_error());
 
 		mysql_query("update $member_table set new_memo=1 where no='$to'") or error(mysql_error());
@@ -84,11 +84,11 @@
 
 			$temp=mysql_fetch_array(mysql_query("select * from $t_board"."_$id where no='$selected[$i]'"));
 
-			// 답글이 없을때 
+			// 답글이 없을때
 			if(!$temp[child]) {
 
 				// 글삭제
-				mysql_query("delete from $t_board"."_$id where no='$selected[$i]'") or Error(mysql_error()); 
+				mysql_query("delete from $t_board"."_$id where no='$selected[$i]'") or Error(mysql_error());
 
 				// 카테고리에서 숫자 하나 뺌
 				mysql_query("update $t_category"."_$id set num=num-1 where no='$temp[category]'",$connect);
@@ -103,13 +103,13 @@
 				// 이전, 다음글에 대한 정리
 				if($temp[depth]==0) {
 					// 이전글이 있으면 빈자리 메꿈;;;
-					if($temp[prev_no]) mysql_query("update $t_board"."_$id set next_no='$temp[next_no]' where next_no='$temp[no]'"); 
+					if($temp[prev_no]) mysql_query("update $t_board"."_$id set next_no='$temp[next_no]' where next_no='$temp[no]'");
 					// 다음글이 있으면 빈자리 메꿈;;;
-					if($temp[next_no]) mysql_query("update $t_board"."_$id set prev_no='$temp[prev_no]' where prev_no='$temp[no]'"); 
+					if($temp[next_no]) mysql_query("update $t_board"."_$id set prev_no='$temp[prev_no]' where prev_no='$temp[no]'");
 				} else {
 					$temp2=mysql_fetch_array(mysql_query("select count(*) from $t_board"."_$id where father='$temp[father]'"));
 					// 원본글이 있으면 원본글의 자식 글을 없앰;;;
-					if(!$temp2[0]) mysql_query("update $t_board"."_$id set child='0' where no='$temp[father]'"); 
+					if(!$temp2[0]) mysql_query("update $t_board"."_$id set child='0' where no='$temp[father]'");
 				}
 				mysql_query("delete from $t_comment"."_$id where parent='$selected[$i]'") or Error(mysql_error()); // 코멘트삭제
 
@@ -117,14 +117,14 @@
 				if($notice_user) {
 					if($temp[ismember]) {
 						$_to = $temp[ismember];
-						$_from = $member[no];	
+						$_from = $member[no];
 						$_subject = stripslashes($temp[name])." 님의 게시물이 ".$_kind."되었습니다";
 						$_memo = stripslashes($temp[name])." 님께서 쓰신 \"".stripslashes($temp[subject])."\" 글이 $member[name]님에 의해서 게시판 성격에 적합하지 않아서 ".$_kind." 되었습니다\n";
 						_send_message($_to,$_from,$_subject,$_memo);
 					}
 				}
 
-			}  
+			}
 		}
 		$temp=mysql_fetch_array(mysql_query("select count(*) from  $t_board"."_$id",$connect));
 		@mysql_query("update $admin_table set total_article='$temp[0]' where name='$id'") or Error(mysql_error());
@@ -140,8 +140,8 @@
 		for($i=0;$i<count($selected)-1;$i++) {
 			$s_data=mysql_fetch_array(mysql_query("select * from $t_board"."_$id where no='$selected[$i]'"));
 
-			
-			// 답글이 없을때;; 
+
+			// 답글이 없을때;;
 			if($s_data[arrangenum]==0) {
 
 				// 원본글을 모두 구함
@@ -156,7 +156,7 @@
 				$max_headnum=mysql_fetch_array(mysql_query("select min(headnum) from $t_board"."_$board_name where (division='$max_division' or division='$second_division') and headnum>-2000000000",$connect));
 				if(!$max_headnum[0]) $max_headnum[0]=0;
 				$headnum=$max_headnum[0]-1;
-				
+
 				// 이동할 게시판의 이전, 이후글을 구함
 				$next_data=mysql_fetch_array(mysql_query("select division,headnum,arrangenum from $t_board"."_$board_name where (division='$max_division' or division='$second_division') and headnum>-2000000000 order by headnum limit 1"));
 				if(!$next_data[0]) $next_data[0]="0";
@@ -177,7 +177,7 @@
 						@mkdir("./data/$board_name",0777);
 					}
 
-					// 업로드된 파일이 있을경우 처리 #1		
+					// 업로드된 파일이 있을경우 처리 #1
 					if($data[s_file_name1]) {
 						$temp_ext=time();
 						@mkdir("./data/$board_name/".$temp_ext,0777);
@@ -186,7 +186,7 @@
 						@chmod("./".$data[file_name1],0706);
 						@chmod("./data/$board_name/".$temp_ext,0707);
 					}
-					// 업로드된 파일이 있을경우 처리 #2	
+					// 업로드된 파일이 있을경우 처리 #2
 					if($data[s_file_name2]) {
 						$temp_ext=time();
 						@mkdir("./data/$board_name/".$temp_ext,0777);
@@ -244,7 +244,7 @@
 				if($notice_user) {
 					if($s_data[ismember]) {
 						$_to = $s_data[ismember];
-						$_from = $member[no];	
+						$_from = $member[no];
 						$_subject = stripslashes($s_data[name])." 님의 게시물이 ".$_kind."되었습니다";
 						$_memo = stripslashes($s_data[name])." 님께서 쓰신 \"".stripslashes($s_data[subject])."\" 글이 $member[name]님에 의해서 ".$_kind." 되었습니다\n";
 						$_memo .= " 옮겨진 위치 : zboard.php?id=".$board_name."&no=".$no;

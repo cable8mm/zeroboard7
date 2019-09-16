@@ -1,4 +1,4 @@
-<?
+<?php
   // 라이브러리 함수 파일 인크루드
   require "lib.php";
 
@@ -41,7 +41,7 @@
   if($password)
   {
    $temp=mysql_fetch_array(mysql_query("select password('$password')"));
-   $password=$temp[0];   
+   $password=$temp[0];
   }
 
   // 원본글을 가져옴
@@ -61,7 +61,7 @@
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////
-  // 글삭제일때 
+  // 글삭제일때
   ////////////////////////////////////////////////////////////////////////////////////////////
 
   if(!$s_data[child]) // 답글이 없을때;;
@@ -80,7 +80,7 @@
     if($s_data[next_no]) mysql_query("update $t_board"."_$id set prev_no='$s_data[prev_no]' where prev_no='$s_data[no]'"); // 다음글이 있으면 빈자리 메꿈;;;
    }
    else
-   { 
+   {
     $temp=mysql_fetch_array(mysql_query("select count(*) from $t_board"."_$id where father='$s_data[father]'"));
     if(!$temp[0]) mysql_query("update $t_board"."_$id set child='0' where no='$s_data[father]'"); // 원본글이 있으면 원본글의 자식글을 없앰;;;
    }

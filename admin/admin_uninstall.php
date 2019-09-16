@@ -1,4 +1,4 @@
-<?
+<?php
 	if($exec=="uninstall"&&$uninstall=="ok") {
 		if(!$u_hostname) Error("Hostname을 입력하세요");
 		if(!$u_userid) Error("User ID를 입력하세요");
@@ -9,7 +9,7 @@
 
 		$connect = @mysql_connect($u_hostname,$u_userid,$u_password) or error(mysql_error());
 		@mysql_select_db($u_dbname) or Error(mysql_error());
-		
+
 		$result = mysql_query("show table status from $u_dbname like 'zetyx%'",$connect) or error(mysql_error());
 		while($data=mysql_fetch_array($result)) {
 			mysql_query("drop table $data[Name]");
@@ -19,7 +19,7 @@
 		zRmDir("./icon");
 		z_unlink("./config.php");
 
-		error("제로보드가 서버에서 완전히 제거되었습니다","install.php"); 
+		error("제로보드가 서버에서 완전히 제거되었습니다","install.php");
 		exit();
 	}
 ?>

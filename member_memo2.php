@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -56,19 +56,19 @@
 
 	if($page>$total_page) $page=$total_page; // 페이지가 전체 페이지보다 크면 페이지 번호 바꿈
 
-// 데이타 뽑아오는 부분... 
+// 데이타 뽑아오는 부분...
 	$que="select a.no as no, a.subject as subject, a.reg_date as reg_date, a.readed as readed, b.name as name, b.user_id as user_id, a.member_to as member_to from $send_memo_table a ,$member_table b where a.member_no='$member[no]' and a.member_to=b.no  order by a.no desc limit $start_num,$page_num";
 	$result=mysql_query($que) or Error(mysql_error());
 
 // MySQL 닫기
 	if($connect) mysql_close($connect);
 
-// 페이지 계산  $print_page 라는 변수에 저장 
+// 페이지 계산  $print_page 라는 변수에 저장
 	$print_page="";
 	$show_page_num=10;
 	$start_page=(int)(($page-1)/$show_page_num)*$show_page_num;
 	$i=1;
-	
+
 	if($page>$show_page_num) {
 		$prev_page=$start_page;
 		$print_page="<a href=$PHP_SELF?id=$id&page=$prev_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[Prev]</a> ";
@@ -87,7 +87,7 @@
 		$print_page.="..<a href=$PHP_SELF?id=$id&page=$total_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[$total_page]</a>";
 		$print_page=" <a href=$PHP_SELF?id=$id&page=$next_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[Next]</a>";
 	}
-   
+
 	head("bgcolor=white");
 ?>
 
@@ -123,13 +123,13 @@
 </table>
 
 <!-- 선택된 메모가 있을때;; -->
-<?
+<?php
  if($now_data[no]) {
 	$temp_name = get_private_icon($now_data[member_to], "2");
 	if($temp_name) $now_data[name]="<img src='$temp_name' border=0 align=absmiddle>";
 	$temp_name = get_private_icon($now_data[member_to], "1");
 	if($temp_name) $now_data[name]="<img src='$temp_name' border=0 align=absmiddle>&nbsp;".$now_data[name];
- 
+
 ?>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -192,7 +192,7 @@
   </tr>
 </table>
 
-<?
+<?php
  }
 ?>
 
@@ -222,7 +222,7 @@
           <td width="60" align="center"><img src="images/memo_date.gif" width="23" height="15"></td>
         </tr>
 
-<?
+<?php
 // 출력
 	$loop_number=$total-($page-1)*$page_num;
 	while($data=mysql_fetch_array($result)) {
@@ -232,7 +232,7 @@
 		if($temp_name) $data[name]="<img src='$temp_name' border=0 align=absmiddle>";
 		$temp_name = get_private_icon($data[member_to], "1");
 		if($temp_name) $data[name]="<img src='$temp_name' border=0 align=absmiddle>&nbsp;".$data[name];
-		
+
 		$data[subject]=stripslashes(del_html($data[subject]));
 		$reg_date=date("Y/m/d H:i",$data[reg_date]);
 		if($data[readed]==0) $readed="<img src=images/memo_readed.gif>"; else $readed="<img src=images/memo_unread.gif>"
@@ -252,7 +252,7 @@
           <td width="60" align="center"><font style=font-family:Tahoma;font-size:8pt;><span title='<?=$reg_date?>'><? echo"".date("m/d",$data[reg_date])."" ?></span></font></td>
         </tr>
 
-<?
+<?php
  		$loop_number--;
 	}
 ?>
@@ -282,6 +282,6 @@
 
 
 
-<?
+<?php
 	foot();
 ?>

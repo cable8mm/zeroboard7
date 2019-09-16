@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Search ZipCode</title>
-<meta http-equiv="Content-Type" content="text/html; charset=euc-kr"> 
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
 <link rel="stylesheet" href="style.css" type="text/css">
 
 <script>
@@ -22,7 +22,7 @@ function postaddr(var1)
 
 <body bgcolor=white leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
-<?
+<?php
  echo urldecode(stripslashes($memo));
 ?>
 <br>

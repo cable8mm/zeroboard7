@@ -1,5 +1,5 @@
-<?
-	//set_time_limit(0); 
+<?php
+	//set_time_limit(0);
     $del_que1 = $del_que2 = null;
 
 /***************************************************************************
@@ -66,7 +66,7 @@
 //패스워드를 암호화
 	if(strlen($password)) {
 		$temp=mysql_fetch_array(mysql_query("select password('$password')"));
-		$password=$temp[0];   
+		$password=$temp[0];
 	}
 
 // 관리자이거나 HTML허용레벨이 낮을때 태그의 금지유무를 체크
@@ -80,12 +80,12 @@
 			$memo=str_replace("<","&lt;",$memo);
 			$tag=explode(",",$setup[avoid_tag]);
 			for($i=0;$i<count($tag);$i++) {
-				if(!isblank($tag[$i])) { 
-					$memo=eregi_replace("&lt;".$tag[$i]." ","<".$tag[$i]." ",$memo); 
-					$memo=eregi_replace("&lt;".$tag[$i].">","<".$tag[$i].">",$memo); 
-					$memo=eregi_replace("&lt;/".$tag[$i],"</".$tag[$i],$memo); 
+				if(!isblank($tag[$i])) {
+					$memo=eregi_replace("&lt;".$tag[$i]." ","<".$tag[$i]." ",$memo);
+					$memo=eregi_replace("&lt;".$tag[$i].">","<".$tag[$i].">",$memo);
+					$memo=eregi_replace("&lt;/".$tag[$i],"</".$tag[$i],$memo);
 				}
-			}  
+			}
 		}
 	} else {
 		if(!$use_html) {
@@ -128,7 +128,7 @@
 	if($use_html<2) {
 		$memo=str_replace("  ","&nbsp;&nbsp;",$memo);
 		$memo=str_replace("\t","&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",$memo);
-	}	
+	}
 	$sitelink1=addslashes(del_html($sitelink1));
 	$sitelink2=addslashes(del_html($sitelink2));
 	$email=addslashes(del_html($email));
@@ -224,12 +224,12 @@
 			$s_file_name1=str_replace("-","_",$s_file_name1);
 
 			// 디렉토리를 검사함
-			if(!is_dir("data/".$id)) { 
+			if(!is_dir("data/".$id)) {
 				@mkdir("data/".$id,0777);
 				@chmod("data/".$id,0706);
 			}
 
-			// 중복파일이 있을때;; 
+			// 중복파일이 있을때;;
 			if(file_exists("data/$id/".$s_file_name1)) {
 				@mkdir("data/$id/".$reg_date,0777);
 				if(!move_uploaded_file($file1,"data/$id/".$reg_date."/".$s_file_name1)) Error("파일업로드가 제대로 되지 않았습니다");
@@ -238,7 +238,7 @@
 				@chmod("data/$id/".$reg_date,0707);
 			} else {
 				if(!move_uploaded_file($file1,"data/$id/".$s_file_name1)) Error("파일업로드가 제대로 되지 않았습니다");
-				$file_name1="data/$id/".$s_file_name1;   
+				$file_name1="data/$id/".$s_file_name1;
 				@chmod($file_name1,0706);
 			}
 		}
@@ -270,7 +270,7 @@
 				@chmod("data/".$id,0706);
 			}
 
-			// 중복파일이 있을때;; 
+			// 중복파일이 있을때;;
 			if(file_exists("data/$id/".$s_file_name2)) {
 				@mkdir("data/$id/".$reg_date,0777);
 				if(!move_uploaded_file($file2,"data/$id/".$reg_date."/".$s_file_name2)) Error("파일업로드가 제대로 되지 않았습니다");
@@ -279,7 +279,7 @@
 				@chmod("data/$id/".$reg_date,0707);
 			} else {
 				if(!move_uploaded_file($file2,"data/$id/".$s_file_name2)) Error("파일업로드가 제대로 되지 않았습니다");
-				$file_name2="data/$id/".$s_file_name2;              
+				$file_name2="data/$id/".$s_file_name2;
 				@chmod($file_name2,0706);
 			}
 		}
@@ -301,14 +301,14 @@
 		}
 
 		// 파일삭제
-		if($del_file1==1) {@z_unlink("./".$s_data[file_name1]);$del_que1=",file_name1='',s_file_name1=''";} 
-		if($del_file2==1) {@z_unlink("./".$s_data[file_name2]);$del_que2=",file_name2='',s_file_name2=''";} 
+		if($del_file1==1) {@z_unlink("./".$s_data[file_name1]);$del_que1=",file_name1='',s_file_name1=''";}
+		if($del_file2==1) {@z_unlink("./".$s_data[file_name2]);$del_que2=",file_name2='',s_file_name2=''";}
 
 		// 파일등록
 		if($file_name1) {$del_que1=",file_name1='$file_name1',s_file_name1='$s_file_name1'";}
 		if($file_name2) {$del_que2=",file_name2='$file_name2',s_file_name2='$s_file_name2'";}
 
-		// 공지 -> 일반글 
+		// 공지 -> 일반글
 		if(!$notice&&$s_data[headnum]<="-2000000000") {
 			$temp=mysql_fetch_array(mysql_query("select max(division) from $t_division"."_$id"));
 			$max_division=$temp[0];
@@ -317,7 +317,7 @@
 
 			// 헤드넘+1 한값을 가짐;;
 			$max_headnum=mysql_fetch_array(mysql_query("select min(headnum) from $t_board"."_$id where (division='$max_division' or division='$second_division') and headnum>-2000000000")); // 공지가 아닌 최소 headnum 구함
-			$headnum=$max_headnum[0]-1; 
+			$headnum=$max_headnum[0]-1;
 
 			$next_data=mysql_fetch_array(mysql_query("select no,headnum,division from $t_board"."_$id where (division='$max_division' or division='$second_division') and headnum='$max_headnum[0]' and arrangenum='0'")); // 다음글을 구함;;
 			if(!$next_data[0]) $next_data[0]="0";
@@ -329,7 +329,7 @@
 			if($prev_data[0]) $prev_no=$prev_data[0]; else $prev_no=0;
 
 			$child="0";
-			$depth="0";    
+			$depth="0";
 			$arrangenum="0";
 			$father="0";
 			minus_division($s_data[division]);
@@ -337,17 +337,17 @@
 			plus_division($division);
 
 			// 다음글의 이전글을 수정
-			if($next_no)mysql_query("update $t_board"."_$id set prev_no='$no' where division='$next_data[division]' and headnum='$next_data[headnum]'");  
+			if($next_no)mysql_query("update $t_board"."_$id set prev_no='$no' where division='$next_data[division]' and headnum='$next_data[headnum]'");
 
 			// 이전글의 다음글을 수정
-			if($prev_no)mysql_query("update $t_board"."_$id set next_no='$no' where no='$prev_no'");                  
+			if($prev_no)mysql_query("update $t_board"."_$id set next_no='$no' where no='$prev_no'");
 
 			mysql_query("update $t_board"."_$id set prev_no=0 where (division='$max_division' or division='$second_division') and prev_no='$s_data[no]' and headnum!='$next_data[headnum]'");
 			mysql_query("update $t_category"."_$id set num=num-1 where no='$s_data[category]'",$connect);
 			mysql_query("update $t_category"."_$id set num=num+1 where no='$category'",$connect);
 		}
 
-   		// 일반글 -> 공지 
+   		// 일반글 -> 공지
 		elseif($notice&&$s_data[headnum]>-2000000000) {
 			$temp=mysql_fetch_array(mysql_query("select max(division) from $t_division"."_$id"));
 			$max_division=$temp[0];
@@ -380,11 +380,11 @@
 
 			mysql_query("update $t_board"."_$id set next_no='$s_data[next_no]' where next_no='$s_data[no]'");
 
-			mysql_query("update $t_board"."_$id set prev_no='$no' where prev_no='0' and no!='$no'") or error(mysql_error()); // 다음글의 이전글을 설정 
+			mysql_query("update $t_board"."_$id set prev_no='$no' where prev_no='0' and no!='$no'") or error(mysql_error()); // 다음글의 이전글을 설정
 			mysql_query("update $t_category"."_$id set num=num-1 where no='$s_data[category]'",$connect);
 			mysql_query("update $t_category"."_$id set num=num+1 where no='$category'",$connect);
 
-		// 일반->일반, 공지->공지 일때 
+		// 일반->일반, 공지->공지 일때
 		} else {
 			@mysql_query("update $t_board"."_$id set name='$name',subject='$subject',email='$email',homepage='$homepage',memo='$memo',sitelink1='$sitelink1',sitelink2='$sitelink2',use_html='$use_html',reply_mail='$reply_mail',is_secret='$is_secret',category='$category' $del_que1 $del_que2 where no='$no'") or error(mysql_error());
 			mysql_query("update $t_category"."_$id set num=num-1 where no='$s_data[category]'",$connect);
@@ -402,7 +402,7 @@
 		$next_no=$s_data[next_no];
 		$father=$s_data[no];
 		$child=0;
-		$headnum=$s_data[headnum];    
+		$headnum=$s_data[headnum];
 		if($headnum<=-2000000000&&$notice) Error("공지사항에는 답글을 달수가 없습니다");
 		$depth=$s_data[depth]+1;
 		$arrangenum=$s_data[arrangenum]+1;
@@ -413,9 +413,9 @@
 
 		$division=$s_data[division];
 		plus_division($s_data[division]);
-   
+
 		// 답글 데이타 입력;;
-		mysql_query("insert into $t_board"."_$id (division,headnum,arrangenum,depth,prev_no,next_no,father,child,ismember,memo,ip,password,name,homepage,email,subject,use_html,reply_mail,category,is_secret,sitelink1,sitelink2,file_name1,file_name2,s_file_name1,s_file_name2,x,y,reg_date,islevel) values ('$division','$headnum','$arrangenum','$depth','$prev_no','$next_no','$father','$child','$member[no]','$memo','$ip','$password','$name','$homepage','$email','$subject','$use_html','$reply_mail','$category','$is_secret','$sitelink1','$sitelink2','$file_name1','$file_name2','$s_file_name1','$s_file_name2','$x','$y','$reg_date','$member[is_admin]')") or error(mysql_error());    
+		mysql_query("insert into $t_board"."_$id (division,headnum,arrangenum,depth,prev_no,next_no,father,child,ismember,memo,ip,password,name,homepage,email,subject,use_html,reply_mail,category,is_secret,sitelink1,sitelink2,file_name1,file_name2,s_file_name1,s_file_name2,x,y,reg_date,islevel) values ('$division','$headnum','$arrangenum','$depth','$prev_no','$next_no','$father','$child','$member[no]','$memo','$ip','$password','$name','$homepage','$email','$subject','$use_html','$reply_mail','$category','$is_secret','$sitelink1','$sitelink2','$file_name1','$file_name2','$s_file_name1','$s_file_name2','$x','$y','$reg_date','$member[is_admin]')") or error(mysql_error());
 
 		// 원본글과 원본글의 아래글의 속성 변경;;
 		$no=mysql_insert_id();
@@ -463,11 +463,11 @@
 			else {
 				$next_data=mysql_fetch_array(mysql_query("select no,headnum,division from $t_board"."_$id where division='$next_data[division]' and headnum='$next_data[headnum]' and arrangenum='$next_data[arrangenum]'"));
 			}
-    
+
 			$prev_data=mysql_fetch_array(mysql_query("select no from $t_board"."_$id where (division='$max_division' or division='$second_division') and headnum<=-2000000000 order by headnum desc limit 1"));
 			if($prev_data[0]) $prev_no=$prev_data[0]; else $prev_no="0";
 
-		// 공지사항일때;; 
+		// 공지사항일때;;
 		} else {
 			$temp=mysql_fetch_array(mysql_query("select max(division) from $t_division"."_$id"));
 			$max_division=$temp[0]+1;
@@ -483,7 +483,7 @@
 			else {
 				$next_data=mysql_fetch_array(mysql_query("select no,headnum,division from $t_board"."_$id where division='$next_data[division]' and headnum='$next_data[headnum]' and arrangenum='0'"));
 			}
-			$prev_no=0; 
+			$prev_no=0;
 		}
 
 		$next_no=$next_data[no];
@@ -519,9 +519,9 @@
 // 회원일 경우 해당 해원의 점수 주기
 	if($mode=="write"||$mode=="reply") @mysql_query("update $member_table set point1=point1+1 where no='$member[no]'",$connect) or error(mysql_error());
 
-// MySQL 닫기 
+// MySQL 닫기
 	if($connect) {
-		mysql_close($connect); 
+		mysql_close($connect);
 		unset($connect);
 	}
 

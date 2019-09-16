@@ -1,4 +1,4 @@
-<?
+<?php
  $sC_dark0 = "#9F9F9F";
  $sC_dark1 = "#404040";
  $sC_light0 = "#FEFEFE";

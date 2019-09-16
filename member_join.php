@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -69,7 +69,7 @@
  function check_submit()
  {
 
-<?
+<?php
 	if(file_exists("./join_license.txt")) {
 ?>
 
@@ -78,13 +78,13 @@
 	return false;
   }
 
-<?
+<?php
 	}
 ?>
 
   if(!write.user_id.value) {alert("아이디를 입력하여 주십시요.");write.user_id.focus(); return false;}
 
-<?
+<?php
 	if($_zbDefaultSetup[enable_hangul_id]=="false") {
 ?>
 
@@ -94,27 +94,27 @@
     write.user_id.focus();
     return false;
   }
-  var valid = "abcdefghijklmnopqrstuvwxyz0123456789_"; 
-  var startChar = "abcdefghijklmnopqrstuvwxyz"; 
-  var temp; 
-  write.user_id.value = write.user_id.value.toLowerCase(); 
-  temp = write.user_id.value.substring(0,1); 
+  var valid = "abcdefghijklmnopqrstuvwxyz0123456789_";
+  var startChar = "abcdefghijklmnopqrstuvwxyz";
+  var temp;
+  write.user_id.value = write.user_id.value.toLowerCase();
+  temp = write.user_id.value.substring(0,1);
   if (startChar.indexOf(temp) == "-1") {
     alert("아이디의 첫 글자는 영문이어야 합니다.");
-    write.user_id.value = ""; 
-    write.user_id.focus(); 
+    write.user_id.value = "";
+    write.user_id.focus();
     return false;
   }
-  for (var i=0; i<write.user_id.value.length; i++) { 
-    temp = "" + write.user_id.value.substring(i, i+1); 
-    if (valid.indexOf(temp) == "-1") { 
+  for (var i=0; i<write.user_id.value.length; i++) {
+    temp = "" + write.user_id.value.substring(i, i+1);
+    if (valid.indexOf(temp) == "-1") {
       alert("아이디는 영문과 숫자, _ 로만 이루어질수 있습니다.");
-      write.user_id.value = ""; 
-      write.user_id.focus(); 
+      write.user_id.value = "";
+      write.user_id.focus();
       return false;
     }
-  } 
-<?
+  }
+<?php
 	}
 ?>
 
@@ -182,7 +182,7 @@
 
   <tr><td colspan=2><img src=images/member_joinin.gif><br><br></td></tr>
 
-<?
+<?php
 	if(file_exists("./join_license.txt")) {
 		$f=fopen("join_license.txt",r);
 		$join_license = fread($f,filesize("join_license.txt"));
@@ -197,7 +197,7 @@
   <tr>
   	<td colspan=2>&nbsp;&nbsp;&nbsp;<input type=checkbox name=accept value=1 onclick="return check_accept()"> 위의 가입 약관에 동의합니다</td>
   </tr>
-<?
+<?php
 	}
 ?>
         <tr>
@@ -227,9 +227,9 @@
 <? if($group[use_birth]) { ?>
   <tr align=right height=28>
      <td style=font-family:Tahoma;font-size:8pt;><b>Birthday&nbsp;</td>
-     <td align=left>&nbsp;<input type=text name=birth_1 size=4 maxlength=4 style=border-color:#d8b3b3 class=input> 년 
+     <td align=left>&nbsp;<input type=text name=birth_1 size=4 maxlength=4 style=border-color:#d8b3b3 class=input> 년
                     &nbsp;<input type=text name=birth_2 size=2 maxlength=2 style=border-color:#d8b3b3 class=input> 월
-                    &nbsp;<input type=text name=birth_3 size=2 maxlength=2 style=border-color:#d8b3b3 class=input> 일 
+                    &nbsp;<input type=text name=birth_3 size=2 maxlength=2 style=border-color:#d8b3b3 class=input> 일
           <input type=checkbox value=1 checked name=open_birth> 공개
   </tr>        <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
@@ -312,7 +312,7 @@
         </tr>
 <? } ?>
 
-<? if($group[use_home_address]) { ?> 
+<? if($group[use_home_address]) { ?>
   <tr align=right height=28>
      <td style=font-family:Tahoma;font-size:8pt;>Home Address&nbsp;</td>
      <td align=left>&nbsp;<input type=text name=home_address size=40 maxlength=255 value="<?=$member[home_address]?>" style=border-color:#d8b3b3 class=input><input type=button value='검색' class=input style=border-color:#d8b3b3 onclick=address_popup(1)>
@@ -411,7 +411,7 @@
 </table>
 
 
-<?
+<?php
 	@mysql_close($connect);
 	foot();
 ?>

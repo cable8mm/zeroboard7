@@ -1,4 +1,4 @@
-<?
+<?php
 
 /***************************************************************************
  * 공통 파일 include
@@ -14,7 +14,7 @@
 // 패스워드를 암호화
 	if($password) {
 		$temp=mysql_fetch_array(mysql_query("select password('$password')"));
-		$password=$temp[0];   
+		$password=$temp[0];
 	}
 
 // 원본글을 가져옴
@@ -34,7 +34,7 @@
 
 // 코멘트 갯수 정리
 	$total=mysql_fetch_array(mysql_query("select count(*) from $t_comment"."_$id where parent='$no'"));
-	mysql_query("update $t_board"."_$id set total_comment='$total[0]' where no='$no'")  or error(mysql_error()); 
+	mysql_query("update $t_board"."_$id set total_comment='$total[0]' where no='$no'")  or error(mysql_error());
 
 // 회원일 경우 해당 해원의 점수 주기
 	if($member[no]==$s_data[ismember]) @mysql_query("update $member_table set point2=point2-1 where no='$member[no]'",$connect) or error(mysql_error());

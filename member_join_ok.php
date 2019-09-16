@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -45,7 +45,7 @@
           $user_id = addslashes($user_id);
           $password = addslashes($password);
         }
-	
+
 	$user_id=trim($user_id);
 	if(isBlank($user_id)) Error("ID를 입력하셔야 합니다","");
 
@@ -145,6 +145,6 @@
 	opener.window.history.go(0);
 	window.close();
 </script>
-<?
+<?php
     foot();
 ?>

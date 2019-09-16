@@ -1,4 +1,4 @@
-<?
+<?php
 	if($cart) {
 		$temp=explode("||",$cart);
 		$s_que=" and ( no='$temp[1]' ";
@@ -8,7 +8,7 @@
 	}
 	// 직접 선택이 없을때
 	else {
-		$s_que=stripslashes($s_que); 
+		$s_que=stripslashes($s_que);
 		$s_que = str_replace("where","and", $s_que);
 	}
 
@@ -76,7 +76,7 @@
       <input type=submit value="메일보내기" style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:23px;>&nbsp;&nbsp;
       <input type=button value=" 이전 화면 " style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:23px; onclick=history.back()>
   </td>
-      
+
 </tr>
 </form>
 <table>

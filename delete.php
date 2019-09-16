@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 공통 파일 include
  **************************************************************************/
@@ -24,7 +24,7 @@
 	$target="delete_ok.php";
 
 	$a_list="<a href=zboard.php?$href$sort>";
-  
+
 	$a_view="<a href=# onclick=history.back()>";
 
 	head();
@@ -32,6 +32,6 @@
 	include $dir."/ask_password.php";
 
 	foot();
- 
+
  	include "_foot.php";
 ?>

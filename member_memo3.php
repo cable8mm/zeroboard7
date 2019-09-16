@@ -1,7 +1,7 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	require "lib.php";
-	
+
 // DB 연결
 	$connect=dbConn();
 
@@ -30,7 +30,7 @@
 			$_str = str_replace("<? die('Access Denied');/*","",$_str);
 			$_str = str_replace("*/?>","",$_str);
 			$_connector = explode(":",$_str);
-			
+
 			$total = count($_connector);
 		}
 	} else $total=$total_member;
@@ -41,7 +41,7 @@
 
 	if(!$page) $page=1;
 	if($page>$total_page) $page=1; // 페이지가 전체 페이지보다 크면 페이지 번호 바꿈
- 
+
 	$start_num=($page-1)*$page_num; // 페이지 수에 따른 출력시 첫번째가 될 글의 번호 구함
 
 
@@ -66,7 +66,7 @@
 
 	}
 
-// 페이지 계산  $print_page 라는 변수에 저장 
+// 페이지 계산  $print_page 라는 변수에 저장
 	$print_page="";
 	$show_page_num=10;
 	$start_page=(int)(($page-1)/$show_page_num)*$show_page_num;
@@ -77,7 +77,7 @@
 		$print_page="<a href=$PHP_SELF?page=$prev_page&status=$status&keyword=$keyword>[Prev]</a> ";
 		$print_page.="<a href=$PHP_SELF?page=1&status=$status&keyword=$keyword>[1]</a>..";
 	}
-	
+
 	while($i+$start_page<=$total_page&&$i<=$show_page_num) {
 		$move_page=$i+$start_page;
 		if($page==$move_page) $print_page.=" <b>$move_page</b> ";
@@ -90,7 +90,7 @@
 		$print_page.="..<a href=$PHP_SELF?page=$total_page&status=$status&keyword=$keyword>[$total_page]</a>";
 		$print_page.=" <a href=$PHP_SELF?page=$next_page&status=$status&keyword=$keyword>[Next]</a>";
 	}
-   
+
 	head("bgcolor=white");
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -144,18 +144,18 @@
   <?if($status){?><td width=15%><img src=images/memo_status.gif></td><?}?>
 </tr>
 
-<?
+<?php
 // 출력
 	$loop_number=$total-($page-1)*$page_num;
 	while($data=mysql_fetch_array($result)) {
 		$name=stripslashes($data[name]);
-		
+
 		$temp_name = get_private_icon($data[no], "2");
 		if($temp_name) $name="<img src='$temp_name' border=0 align=absmiddle>";
 		$temp_name = get_private_icon($data[no], "1");
 		if($temp_name) $name="<img src='$temp_name' border=0 align=absmiddle>&nbsp;".$name;
 
-		
+
 		$user_id=stripslashes($data[user_id]);
 		//$check=mysql_fetch_array(mysql_query("select count(*) from $now_table where user_id='$data[user_id]'"));
 		if($check[0]) $stat="<img src=images/memo_online.gif>";
@@ -195,7 +195,7 @@
      <td><a href=<?=$PHP_SELF?>?page=<?=$page?>><img src=images/memo_cancel.gif border=0></a></td>
      </tr>
      </table>
-  
+
   </td>
 </tr>
 </form>
@@ -220,8 +220,8 @@
   </tr>
 </table>
 
-<?
-// MySQL 닫기 
+<?php
+// MySQL 닫기
 	if($connect) mysql_close($connect);
 
 	foot();

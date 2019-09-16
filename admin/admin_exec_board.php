@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 게시판 기능 설정 실행
  **************************************************************************/
@@ -33,7 +33,7 @@
 		movepage("$PHP_SELF?group_no=$group_no&exec=view_board&no=$no&exec2=modify&page=$page&page_num=$s_page_num");
 	}
 
-// 게시판 추가 
+// 게시판 추가
 	elseif($exec2=="add_ok") {
 		// 입력된 테이블 값이 빈값인지, 한글이 들어갔는지를 검사
 		if(isBlank($name)) Error("게시판 이름을 입력하셔야 합니다","");
@@ -56,14 +56,14 @@
 		$pds_ext2=str_replace(" ","",$pds_ext2);
 
 		// 관리자 테이블 생성
-		@mysql_query("insert into $admin_table 
+		@mysql_query("insert into $admin_table
 					(group_no,name,skinname,header,footer,header_url,footer_url,bg_image,bg_color,table_width,
 					memo_num,page_num,cut_length,use_category,use_html,use_filter,use_status,use_pds,use_homelink,
 					use_filelink,use_cart,use_autolink,use_showip,use_comment,use_formmail,use_showreply,use_secret,filter,avoid_tag, avoid_ip, use_alllist, max_upload_size,title,pds_ext1,pds_ext2,only_board)
 				values
 					('$group_no','$name','$skinname','$header','$footer','$header_url','$footer_url','$bg_image','$bg_color','$table_width',
 					'$memo_num','$page_num','$cut_length','$use_category','$use_html','$use_filter','$use_status','$use_pds','$use_homelink',
-					'$use_filelink','$use_cart','$use_autolink','$use_showip','$use_comment','$use_formmail','$use_showreply','$use_secret','$filter','$avoid_tag','$avoid_ip','$use_alllist','$max_upload_size','$title','$pds_ext1','$pds_ext2','$only_board')")                  
+					'$use_filelink','$use_cart','$use_autolink','$use_showip','$use_comment','$use_formmail','$use_showreply','$use_secret','$filter','$avoid_tag','$avoid_ip','$use_alllist','$max_upload_size','$title','$pds_ext1','$pds_ext2','$only_board')")
 				or Error("관리자 테이블 생성 에러<br><br>".mysql_error());
 
 		$table_name=$name;
@@ -80,20 +80,20 @@
 		// 코멘트 테이블 생성
 		@mysql_query($board_comment_schema) or Error("게시판의 코멘트 테이블 생성 에러가 발생하였습니다");
 
-		// 카테고리 테이블 생성 
+		// 카테고리 테이블 생성
 		@mysql_query($board_category_table) or Error("게시판의 카테고리 테이블 생성 에러가 발생하였습니다");
- 
+
 		// 기본 카테고리 필드 입력
 		@mysql_query("insert into $t_category"."_$table_name (num, name) values ('0','일반')") or Error("기본 카테고리 입력시 에러가 발생하였습니다");
 		@mysql_query("insert into $t_category"."_$table_name (num, name) values ('0','질문')") or Error("기본 카테고리 입력시 에러가 발생하였습니다");
 		@mysql_query("insert into $t_category"."_$table_name (num, name) values ('0','답변')") or Error("기본 카테고리 입력시 에러가 발생하였습니다");
- 
-		mysql_query("update $group_table set board_num=board_num+1 where no='$group_no'");    
+
+		mysql_query("update $group_table set board_num=board_num+1 where no='$group_no'");
 
 		movepage("$PHP_SELF?exec=view_board&group_no=$group_no&page=$page&page_num=$page_num");
 	}
 
-	// 게시판 삭제 
+	// 게시판 삭제
 	elseif($exec2=="del") {
 		$data=mysql_fetch_array(mysql_query("select name from $admin_table where no='$no'"));
 
@@ -113,7 +113,7 @@
 		mysql_query("drop table $t_comment"."_$table_name") or Error("게시판의 코멘트 테이블 삭제 에러가 발생하였습니다");
 		mysql_query("drop table $t_category"."_$table_name") or Error("게시판의 카테고리 테이블 삭제 에러가 발생하였습니다");
 
-		mysql_query("update $group_table set board_num=board_num-1 where no='$group_no'");    
+		mysql_query("update $group_table set board_num=board_num-1 where no='$group_no'");
 
 		movepage("$PHP_SELF?exec=view_board&group_no=$group_no&page=$page&page_num=$page_num");
 	}
@@ -138,7 +138,7 @@
 		movepage("$PHP_SELF?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	}
 
-	// 카테고리 내용 이동 
+	// 카테고리 내용 이동
 	elseif($exec2=="category_move") {
 		$table_data=mysql_fetch_array(mysql_query("select name from $admin_table where no='$no'"));
 		for($i=0;$i<count($c);$i++) {
@@ -154,7 +154,7 @@
 		movepage("$PHP_SELF?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	}
 
-	// 권한 설정 
+	// 권한 설정
 	elseif($exec2=="modify_grant_ok") {
 		@mysql_query("update $admin_table set grant_html='$grant_html', grant_list='$grant_list',
 				grant_view='$grant_view', grant_comment='$grant_comment', grant_write='$grant_write',

@@ -1,4 +1,4 @@
-<?
+<?php
 /*******************************************************************************
  * Zeroboard 4.1 pl2 외부 로그인 파일
  *
@@ -8,12 +8,12 @@
  *
  * 외부로그인을 원하시는 문서의 제일 상단에 다음과 같이 입력하세요
  *
- * <? 
+ * <?
  *   $_zb_url = "http://도메인/제로보드경로/";                 // 끝에 꼭 / 를 써주세요
  *   $_zb_path = "/home/계정아이디/public_html/제로보드경로/"; // 끝에 꼭 / 를 써주세요
- *   include $_zb_path."outlogin.php"; 
+ *   include $_zb_path."outlogin.php";
  * ?>
- * 
+ *
  *
  * 그런후 외부로그인 폼이나 로그인 상태를 표시하고 싶은곳에 다음과 같이 입력하세요
  *
@@ -21,7 +21,7 @@
  *
  *
  * 위에서 "/home/계정 아이디/public_html/제로보드 경로/" 라는 것은 제로보드의 절대 경로를 나타냅니다.
- * 
+ *
  * 위에서 $_zb_url 과 $_zb_path 는 꼭 적어 주셔야 합니다.
  *
  * 절대경로는 관리자 페이지 메인 제일 아래에 있습니다
@@ -82,7 +82,7 @@
 				alert("인증된 회원만 접근 가능합니다");
 				history.back();
 			</script>
-<?
+<?php
 			exit;
 		}
 
@@ -92,7 +92,7 @@
 			$f = fopen($_zb_path."script/outlogin_script.php",r);
 			$_outlogin_script = fread($f, filesize($_zb_path."script/outlogin_script.php"));
 			fclose($f);
-	
+
 			$f = fopen($_zb_path."outlogin_skin/$skinname/login.html",r);
 			$_outlogin_data = fread($f, filesize($_zb_path."outlogin_skin/$skinname/login.html"));
 			fclose($f);
@@ -108,7 +108,7 @@
 				else $s_url = $s_url . "?id=$id";
 			}
 			$_outlogin_data = str_replace("[s_url]", urlencode($s_url),$_outlogin_data);
-	
+
 			$aUrl = "?group_no=".$group_no;
 
 			$_outlogin_data = str_replace("[member_join]", "<a href=# onclick=\"window.open('".$_zb_url."member_join.php".$aUrl."','zbMemberJoin','width=560,height=590,toolbars=no,resizable=yes,scrollbars=yes')\"><img src=$join_img border=0></a>",$_outlogin_data);
@@ -142,7 +142,7 @@
 
 			if($member[new_memo]) {
 				$memo_on_image = "<img src=$memo_on_img border=0 align=absmiddle> ";
-				$memo_on_sound_out ="<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='0' height='0'><param name=menu value=false><param name=wmode value=transparent><param name=movie value='$memo_swf'><param name=quality value=low><param name='LOOP' value='false'><embed src='$memo_swf' quality=low pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='0' height='0' loop='false' wmode=transparent menu='false'></embed></object>"; 
+				$memo_on_sound_out ="<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000' codebase='http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0' width='0' height='0'><param name=menu value=false><param name=wmode value=transparent><param name=movie value='$memo_swf'><param name=quality value=low><param name='LOOP' value='false'><embed src='$memo_swf' quality=low pluginspage='http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash' type='application/x-shockwave-flash' width='0' height='0' loop='false' wmode=transparent menu='false'></embed></object>";
 			} else {
 				$memo_on_image = "<img src=$memo_off_img border=0 align=absmiddle> ";
 			}
@@ -163,7 +163,7 @@
 			$_outlogin_data = str_replace("[total_guest_connect]",number_format($total_guest_connect),$_outlogin_data);
 			$_outlogin_data = str_replace("[total_connect]",number_format($total_member_connect+$total_guest_connect),$_outlogin_data);
 			$_outlogin_data = str_replace("[dir]",$_zb_url."outlogin_skin/$skinname/images/",$_outlogin_data);
-			
+
 			print $_outlogin_data.$memo_on_sound_out ."\n";
 
 		}
@@ -177,7 +177,7 @@
 		$a_login = "<Zeroboard";
 
 	}
-	
+
 	/*******************************************************
 	 * 최근목록 보여주기를 위한 함수 지정
 	 ******************************************************/
@@ -189,7 +189,7 @@
 		if(!$skinname||!$id||!$title) return;
 
 		$str = zReadFile($_zb_path."latest_skin/".$skinname."/main.html");
-		if(!$str) { 
+		if(!$str) {
 			echo "지정하신 $skinname 이라는 최근목록 스킨이 존재하지 않습니다<br>";
 			return;
 		}
@@ -257,7 +257,7 @@
 		if(!$skinname||!$id) return;
 
 		$str = zReadFile($_zb_path."latest_skin/".$skinname."/main.html");
-		if(!$str) { 
+		if(!$str) {
 			echo "지정하신 $skinname 이라는 최근목록 스킨이 존재하지 않습니다<br>";
 			return;
 		}
@@ -307,7 +307,7 @@
 		if(!$skinname||!$id) return;
 
 		$str = zReadFile($_zb_path."latest_skin/".$skinname."/main.html");
-		if(!$str) { 
+		if(!$str) {
 			echo "지정하신 $skinname 이라는 최근목록 스킨이 존재하지 않습니다<br>";
 			return;
 		}
@@ -321,7 +321,7 @@
 
 		$i = 0;
 		while($data=mysql_fetch_array($result)) {
-			
+
 			if(eregi("\.gif|\.jpg",$data[file_name1])) $filename = $_zb_url.$data[file_name1];
 			elseif(eregi("\.gif|\.jpg",$data[file_name2])) $filename = $_zb_url.$data[file_name2];
 			else $filename="";

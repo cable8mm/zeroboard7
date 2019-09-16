@@ -1,4 +1,4 @@
-<?
+<?php
   $group_data=mysql_fetch_array(mysql_query("select * from $group_table where no='$group_no'"));
 
   $member_data=mysql_fetch_array(mysql_query("select * from $member_table where no='$no'"));
@@ -77,14 +77,14 @@
      <td align=left bgcolor=#e0e0e0>&nbsp;<input type=password name=password size=20 maxlength=20 class=input style=border-color:#b0b0b0> 확인 : <input type=password name=password1 size=20 maxlength=20 class=input style=border-color:#b0b0b0></td>
   </tr>
 
-<?
+<?php
   if($member[no]==$no) $locking = "disabled";
 
   if($member[is_admin]==1)
   {
    $select[$member_data[is_admin]]="selected";
 ?>
-  <tr height=22 align=center>  
+  <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>관리자 레벨&nbsp;&nbsp;</td>
      <td align=left bgcolor=#e0e0e0>&nbsp;<select name=is_admin <?=$locking?>>
                           <option value=3 <?=$select[3]?>>일반사용자</option>
@@ -92,14 +92,14 @@
                           <option value=1 <?=$select[1]?>>최고관리자</option>
                           </select> (관리자 레벨은 일반 레벨에 우선합니다)</td>
   </tr>
-<?
+<?php
   }
 ?>
 
   <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>레벨&nbsp;&nbsp;</td>
      <td align=left bgcolor=#e0e0e0>&nbsp;<select name=level <?=$locking?>>
-<?
+<?php
   for($i=$member[level];$i<=10;$i++) if($i==$member_data[level]) echo"<option value=$i selected>$i</option>"; else echo "<option value=$i>$i</option>";
 ?>
                     </select></td>
@@ -110,9 +110,9 @@
      <td align=left bgcolor=#e0e0e0>&nbsp;<input type=text name=name size=20 maxlength=20 value="<?=$member_data[name]?>" class=input style=border-color:#b0b0b0></td>
   </tr>
 
-<?                                                                                                  
-  if($member_data[is_admin]>2)                                                                          
-  {                                                                                                 
+<?
+  if($member_data[is_admin]>2)
+  {
 
    if(trim($member_data[board_name])) {
 	   $manager_board_temp = split(",",$member_data[board_name]);
@@ -127,16 +127,16 @@
 	   }
    }
 
-   $select[$member_data[board_name]]="selected";                                                      
+   $select[$member_data[board_name]]="selected";
    $board_list=mysql_query("select no,name from $admin_table where group_no='$group_data[no]'") or error(mysql_error());
-?>                                                                                                  
-  <tr height=22 align=center>                                                                       
+?>
+  <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>게시판 관리자 지정&nbsp;&nbsp;</td>
      <td align=left bgcolor=#e0e0e0>
      <?=$__manager_board_name?>
      &nbsp;<select name=board_name>
      <option value="">게시판관리자 지정</option>
-<?
+<?php
 while($board_data_list=mysql_fetch_array($board_list))
 {
  if(!eregi($board_data_list[no].",",$member_data[board_name]))echo"<option value='$board_data_list[no]'>$board_data_list[name]</option>";
@@ -145,16 +145,16 @@ while($board_data_list=mysql_fetch_array($board_list))
      </select> <input type=button value="게시판 관리 권한 추가" onclick="add_board_manager()" style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px;>
      </td>
   </tr>
-<?                                                                                                  
+<?
   }
-?> 
+?>
 
 <? if($group_data[use_birth]) { ?>
   <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>생일&nbsp;&nbsp;</td>
-     <td align=left bgcolor=#e0e0e0>&nbsp;<input type=text name=birth_1 size=4 maxlength=4 value="<?=date("Y",$member_data[birth])?>" class=input style=border-color:#b0b0b0> 년 
+     <td align=left bgcolor=#e0e0e0>&nbsp;<input type=text name=birth_1 size=4 maxlength=4 value="<?=date("Y",$member_data[birth])?>" class=input style=border-color:#b0b0b0> 년
                     &nbsp;<input type=text name=birth_2 size=2 maxlength=2 value="<?=date("m",$member_data[birth])?>" class=input style=border-color:#b0b0b0> 월
-                    &nbsp;<input type=text name=birth_3 size=2 maxlength=2 value="<?=date("d",$member_data[birth])?>" class=input style=border-color:#b0b0b0> 일 
+                    &nbsp;<input type=text name=birth_3 size=2 maxlength=2 value="<?=date("d",$member_data[birth])?>" class=input style=border-color:#b0b0b0> 일
   </tr>
 <? } ?>
 
@@ -202,7 +202,7 @@ while($board_data_list=mysql_fetch_array($board_list))
   </tr>
 <? } ?>
 
-<? if($group_data[use_home_address]) { ?> 
+<? if($group_data[use_home_address]) { ?>
   <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>집 주소&nbsp;&nbsp;</td>
      <td align=left bgcolor=#e0e0e0>&nbsp;<input type=text name=home_address size=50 maxlength=255 value="<?=$member_data[home_address]?>" class=input style=border-color:#b0b0b0></td>
@@ -276,7 +276,7 @@ while($board_data_list=mysql_fetch_array($board_list))
 
   <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>Image Box 용량 지정&nbsp;&nbsp;</td>
-	 <td align=left bgcolor=#e0e0e0>&nbsp;<?
+	 <td align=left bgcolor=#e0e0e0>&nbsp;<?php
 	 	$maxDirSize = zReadFile("icon/member_image_box/".$no."_maxsize.php");
 		if($maxDirSize) {
 			$maxDirSize = str_replace("<?/*","",$maxDirSize);
@@ -289,13 +289,13 @@ while($board_data_list=mysql_fetch_array($board_list))
 
   <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>마크 그림&nbsp;&nbsp;</td>
-     <td align=left bgcolor=#e0e0e0>&nbsp;<? 
+     <td align=left bgcolor=#e0e0e0>&nbsp;<?
 	$private_icon = get_private_icon($member_data[no],1);
 	if($private_icon) {
 ?>
 		<img src='<?=$private_icon?>' border=1>
 		<input type=checkbox value=1 name=delete_private_icon > Delete
-<?
+<?php
 	} else echo"<img src=images/t.gif border=1 width=16 height=15>";
 ?>
 			<br>
@@ -306,16 +306,16 @@ while($board_data_list=mysql_fetch_array($board_list))
 			<font color=#e0e0e0>* </font>(GIF 파일만 가능합니다. 16x16px 정도로 해주세요)
 	 </td>
   </tr>
-	
+
   <tr height=22 align=center>
      <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>이름 그림&nbsp;&nbsp;</td>
-     <td align=left bgcolor=#e0e0e0>&nbsp;<? 
+     <td align=left bgcolor=#e0e0e0>&nbsp;<?
 	$private_name = get_private_icon($member_data[no],2);
 	if($private_name) {
 ?>
 		<img src='<?=$private_name?>' border=1>
 		<input type=checkbox value=1 name=delete_private_name > Delete
-<?
+<?php
 	} else echo"<img src=images/t.gif border=1 width=16 height=15>";
 ?>
 			<br>

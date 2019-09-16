@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 공통파일 include
  **************************************************************************/
@@ -25,5 +25,5 @@
 // 페이지 이동
 	if($setup[use_alllist]) movepage("zboard.php?id=$id&page=$page&page_num=$page_num&select_arrange=$select_arrange&desc=$des&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&category=$category&no=$no");
 	else  movepage("view.php?id=$id&page=$page&page_num=$page_num&select_arrange=$select_arrange&desc=$des&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&category=$category&no=$no");
-  
+
 ?>

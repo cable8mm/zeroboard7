@@ -1,6 +1,6 @@
-<?
+<?php
 /******************************************************************************
- * Zeroboard library 
+ * Zeroboard library
  *
  * 마지막 수정일자 : 2006. 3. 15
  * 이 파일내의 모든 함수는 원하시는대로 사용하셔도 됩니다.
@@ -20,8 +20,8 @@
  	 ******************************************************************************/
  	@error_reporting(E_ALL ^ E_NOTICE);
     foreach($HTTP_GET_VARS as $key=>$val) $$key = del_html($val);
-	@extract($HTTP_POST_VARS); 
-	@extract($HTTP_SERVER_VARS); 
+	@extract($HTTP_POST_VARS);
+	@extract($HTTP_SERVER_VARS);
 	@extract($HTTP_ENV_VARS);
 
     $page = (int)$page;
@@ -38,7 +38,7 @@
 	unset($setup);
 	unset($s_que);
     $select_arrange = str_replace(array("'",'"','\\'),'',$select_arrange);
-    if(!in_array($desc,array('desc','asc'))) unset($desc); 
+    if(!in_array($desc,array('desc','asc'))) unset($desc);
 
 	/*******************************************************************************
  	 * include 되었는지를 검사
@@ -121,7 +121,7 @@
 				session_register("zb_logged_time");
 			}
 
-		} 
+		}
 		$_sessionEnd = getmicrotime();
 
 		// 현재 접속자의 데이타를 체크하여 파일로 저장 (회원, 비회원으로 구분해서 저장)
@@ -296,7 +296,7 @@
 
 		@mysql_select_db($f[4], $connect) or Error("DB Select 에러가 발생했습니다","");
         @mysql_query("set names 'utf8'");
-	
+
 		return $connect;
 	}
 
@@ -339,25 +339,25 @@
 
 		// 이름앞에 붙는 아이콘 정의;;
 		if($group[use_icon]==0) {
-			if($data[ismember]) { 
+			if($data[ismember]) {
 				if($data[islevel]==2) $face_image="<img src=images/admin2_face.gif border=0 align=absmiddle>";
 				elseif($data[islevel]==1) $face_image="<img src=images/admin1_face.gif border=0 align=absmiddle>";
 				else {
 					if($group[icon]) $face_image="<img src=icon/$group[icon] border=0 align=absmiddle>";
 					else $face_image="<img src=images/member_face.gif border=0 align=absmiddle>";
 				}
-			} 
+			}
 			else $face_image="<img src=images/blank_face.gif border=0 align=absmiddle> ";
 		}
 
 		$temp_name = get_private_icon($data[ismember], "1");
 		if($temp_name) $face_image="<img src='$temp_name' border=0 align=absmiddle>";
-	
+
 		if($group[use_icon]<2&&$data[ismember]) $face_image .= "<b>";
 
 		//if($data[ismember]&&$data[parent]) $face_image="<b>";
 		//elseif($data[parent]) $face_image="";
-	
+
 		return $face_image;
 	}
 
@@ -385,7 +385,7 @@
 		@fclose($f);
 
 		print "<!--\n".$license."\n-->\n";
-	
+
 		if(!eregi("member_",$PHP_SELF)) $stylefile="skin/$setup[skinname]/style.css"; else $stylefile="style.css";
 
 		if($setup[use_formmail]) {
@@ -393,11 +393,11 @@
 			$zbLayerScript = fread($f, filesize("script/script_zbLayer.php"));
 			fclose($f);
 		}
-		
+
 		// html 시작부분 출력
 		if($setup[skinname]) {
 			?>
-<html lang="ko"> 
+<html lang="ko">
 <head>
 	<title><?=$setup[title]?></title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
@@ -405,20 +405,20 @@
 	<?if($setup[use_formmail]) echo $zbLayerScript;?>
 	<?if($scriptfile) include "script/".$scriptfile;?>
 </head>
-<body topmargin='0'  leftmargin='0' marginwidth='0' marginheight='0' <?=$body?><?
+<body topmargin='0'  leftmargin='0' marginwidth='0' marginheight='0' <?=$body?><?php
 
 			if($setup[bg_color]) echo " bgcolor=".$setup[bg_color]." ";
 			if($setup[bg_image]) echo " background=".$setup[bg_image]." ";
 
 			?>>
-			<?
+			<?php
 			if($group[header_url]) { @include $group[header_url]; }
 			if($setup[header_url]) { @include $setup[header_url]; }
 			if($group[header]) echo stripslashes($group[header]);
 			if($setup[header]) echo stripslashes($setup[header]);
 			?>
 			<table border=0 cellspacing=0 cellpadding=0 width=<?=$width?> height=1 style="table-layout:fixed;"><col width=100%></col><tr><td><img src=images/t.gif border=0 width=98% height=1 name=zb_get_table_width><br><img src=images/t.gif border=0 name=zb_target_resize width=1 height=1></td></tr></table>
-			<?
+			<?php
 		} else {
 
 			?>
@@ -429,7 +429,7 @@
 	<?=$script?>
 </head>
 <body topmargin='0'  leftmargin='0' marginwidth='0' marginheight='0' <?=$body?>>
-			<?
+			<?php
 				if($group[header_url]) { @include $group[header_url]; }
 				if($group[header]) echo stripslashes($group[header]);
 		}
@@ -457,11 +457,11 @@
 			<tr>
 				<td align=right style=font-family:tahoma,굴림;font-size:8pt;line-height:150%;letter-spacing:0px>
 					<font style=font-size:7pt>Copyright 1999-<?=date("Y")?></font> <a href=http://www.zeroboard.com target=_blank onfocus=blur()><font style=font-family:tahoma,굴림;font-size:8pt;>Zeroboard</a> <?=$maker?>
-				</td>   
+				</td>
 			</tr>
 			</table>
 
-			<?
+			<?php
 			if($_zbResizeCheck) {
 			?>
 			<!-- 이미지 리사이즈를 위해서 처리하는 부분 -->
@@ -469,7 +469,7 @@
 				function zb_img_check(){
 					var zb_main_table_width = document.zb_get_table_width.width;
 					var zb_target_resize_num = document.zb_target_resize.length;
-					for(i=0;i<zb_target_resize_num;i++){ 
+					for(i=0;i<zb_target_resize_num;i++){
 						if(document.zb_target_resize[i].width > zb_main_table_width) {
 							document.zb_target_resize[i].width = zb_main_table_width;
 						}
@@ -478,7 +478,7 @@
 				window.onload = zb_img_check;
 			</script>
 
-			<?
+			<?php
 			}
 
 			if($setup[footer]) echo stripslashes($setup[footer]);
@@ -489,8 +489,8 @@
 
 </body>
 </html>
-			<?
-			
+			<?php
+
 		} else {
 
 			if($group[footer]) echo stripslashes($group[footer]);
@@ -499,12 +499,12 @@
 			?>
 			</body>
 			</html>
-			<?
+			<?php
 		}
 
 		$_phpExcutedTime = (getmicrotime()-$_startTime)-($_sessionEnd-$_sessionStart)-($_nowConnectEnd-$_nowConnectStart)-$_dbTime-$_skinTime;
 		// 실행시간 출력
-		echo "\n\n<!--"; 
+		echo "\n\n<!--";
 		if($_sessionStart&&$_sessionEnd)  		echo"\n Session Excuted  : ".sprintf("%0.4f",$_sessionEnd-$_sessionStart);
 		if($_nowConnectStart&&$_nowConnectEnd) 	echo"\n Connect Checked  : ".sprintf("%0.4f",$_nowConnectEnd-$_nowConnectStart);
 		if($_dbTime)  							echo"\n Query Excuted  : ".sprintf("%0.3f",$_dbTime);
@@ -556,10 +556,10 @@
 			if($data[ismember]<1) $data[ismember]="";
 
 			$zbLayer = $zbLayer."\nprint_ZBlayer('zbLayer$_zbCheckNum', '$data[homepage]', '$data[email]', '$data[ismember]', '$id', '$data[name]', '$traceID', '$traceType', '$isAdmin', '$isMember');";
-		}   
+		}
 		return $_zbCount;
 	}
-	
+
 
 	// 에러 메세지 출력
 	function error($message, $url="") {
@@ -575,7 +575,7 @@
 				alert("<?=$message?>");
 				window.close();
 			</script>
-			<?
+			<?php
 		} else {
 
 			head();
@@ -603,7 +603,7 @@
 
 		$data=mysql_fetch_array(mysql_query("select * from $admin_table where name='$id'",$connect));
 
-		if($data[table_width]<=100) $data[table_width]=$data[table_width]."%"; 
+		if($data[table_width]<=100) $data[table_width]=$data[table_width]."%";
 
 		// 원래는 IP를 보여주는 기능인데, DB 변경을 피하기 위해서 이미지 박스 사용 권한으로 변경하여 사용
 		if(!$data[use_showip]) $data[use_showip] = 1;
@@ -767,8 +767,8 @@
 	function getDefaultSetup() {
 		global $_zb_path;
 		$data = zReadFile($_zb_path."setup.php");
-		$data = str_replace("<?/*","",$data);	
-		$data = str_replace("*/?>","",$data);	
+		$data = str_replace("<?/*","",$data);
+		$data = str_replace("*/?>","",$data);
 		$data = explode("\n",$data);
 		$_c = count($data);
 		unset($defaultSetup);
@@ -793,7 +793,7 @@
 		if(!$defaultSetup[check_email]) $defaultSetup[check_email] = "true";
 		if(!$defaultSetup[memo_limit_time]) $defaultSetup[memo_limit_time] = 7;
 		$defaultSetup[memo_limit_time] = 60 * 60 * 24 * $defaultSetup[memo_limit_time];
-		 
+
 		return $defaultSetup;
 	}
 
@@ -836,34 +836,34 @@
 
 
 	// 주민등록번호 검사
-	function check_jumin($jumin) { 
-		$weight = '234567892345'; // 자리수 weight 지정 
-		$len = strlen($jumin); 
-		$sum = 0; 
+	function check_jumin($jumin) {
+		$weight = '234567892345'; // 자리수 weight 지정
+		$len = strlen($jumin);
+		$sum = 0;
 
 		if ($len <> 13) return false;
 
-		for ($i = 0; $i < 12; $i++) { 
-			$sum = $sum + (substr($jumin,$i,1)*substr($weight,$i,1)); 
-		} 
+		for ($i = 0; $i < 12; $i++) {
+			$sum = $sum + (substr($jumin,$i,1)*substr($weight,$i,1));
+		}
 
-		$rst = $sum%11; 
-		$result = 11 - $rst; 
+		$rst = $sum%11;
+		$result = 11 - $rst;
 
 		if ($result == 10) $result = 0;
 		else if ($result == 11) $result = 1;
 
-		$ju13 = substr($jumin,12,1); 
+		$ju13 = substr($jumin,12,1);
 
 		if ($result <> $ju13) return false;
-		return true; 
-	} 
+		return true;
+	}
 
 
 	// E-mail 주소가 올바른지 검사
 	function ismail( $str ) {
 		if( eregi("([a-z0-9\_\-\.]+)@([a-z0-9\_\-\.]+)", $str) ) return $str;
-		else return ''; 
+		else return '';
 	}
 
 	// E-mail 의 MX를 검색하여 실제 존재하는 메일인지 검사
@@ -899,7 +899,7 @@
 	// 파일 사이즈를 kb, mb에 맞추어서 변환해서 리턴
 	function getfilesize($size) {
 		if(!$size) return "0 Byte";
-		if($size<1024) { 
+		if($size<1024) {
 			return ($size." Byte");
 		} elseif($size >1024 && $size< 1024 *1024)  {
 			return sprintf("%0.1f KB",$size / 1024);
@@ -919,7 +919,7 @@
 			if ($point>$cut_size) return $pointtmp."...";
 			if (ord($msg[$i])<=127) {
 				$pointtmp.= $msg[$i];
-				if ($point%$cut_size==0) return $pointtmp."..."; 
+				if ($point%$cut_size==0) return $pointtmp."...";
 			} else {
 				if ($point%$cut_size==0) return $pointtmp."...";
 				$pointtmp.=$msg[$i].$msg[++$i];
@@ -1042,18 +1042,18 @@
 	}
 
 	// 순환적으로 디렉토리를 삭제
-	function zRmDir($path) { 
-		$directory = dir($path); 
-		while($entry = $directory->read()) { 
-			if ($entry != "." && $entry != "..") { 
-				if (Is_Dir($path."/".$entry)) { 
-					zRmDir($path."/".$entry); 
-				} else { 
-					@UnLink ($path."/".$entry); 
-				} 
-			} 
-		} 
-		$directory->close(); 
-		@RmDir($path); 
+	function zRmDir($path) {
+		$directory = dir($path);
+		while($entry = $directory->read()) {
+			if ($entry != "." && $entry != "..") {
+				if (Is_Dir($path."/".$entry)) {
+					zRmDir($path."/".$entry);
+				} else {
+					@UnLink ($path."/".$entry);
+				}
+			}
+		}
+		$directory->close();
+		@RmDir($path);
 	}
 ?>

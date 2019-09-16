@@ -1,4 +1,4 @@
-<?
+<?php
 	include "lib.php";
 	include "include/list_check.php";
 
@@ -9,7 +9,7 @@
 
 	if(!$subject) Error("제목을 입력하여 주십시요","window.close");
 	if(!$memo) Error("내용을 입력하여 주십시요","window.close");
-	
+
 
 	$connect=dbconn();
 
@@ -17,7 +17,7 @@
 	$setup=get_table_attrib($id);
 
 // 설정되지 않은 게시판
-	if(!$setup[name]) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요","window.close()"); 
+	if(!$setup[name]) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요","window.close()");
 
 // 현재 게시판의 그룹의 설정 읽어 오기
 	$group=group_info($setup[group_no]);
@@ -80,7 +80,7 @@
 	<meta http-equiv=Content-Type content=text/html; charset=EUC-KR>
 	<link rel=StyleSheet HREF=skin/<?=$setup[skinname]?>/style.css type=text/css title=style>
 </head>
-<body topmargin='10'  leftmargin='10' marginwidth='10' marginheight='10' <?
+<body topmargin='10'  leftmargin='10' marginwidth='10' marginheight='10' <?php
 	if($setup[bg_color]) echo " bgcolor=".$setup[bg_color];
 	if($setup[bg_image]) echo " background=".$setup[bg_image];?>>
 
@@ -108,6 +108,6 @@
 </body>
 </html>
 
-<?
+<?php
 	@mysql_close($connect);
 ?>

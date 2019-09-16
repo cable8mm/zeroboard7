@@ -9,7 +9,7 @@
 <tr>
   <td background=<?=$dir?>/4.gif><img src=<?=$dir?>/4.gif border=0></td>
   <td width=100%>
-  
+
     <table border=0 cellspacing=0 cellpadding=0 width=100% height=25>
     <tr>
       <td width=70>Subject</td>
@@ -18,7 +18,7 @@
     </tr>
     </table>
 
-<?
+<?php
   //// 삭제하지 마세요;; 설문조사를 위한 프로그램 불러오는 부분입니다 //////
   include "include/vote_check.php";
   //// 위의 파일에서는 현재 스킨디렉토리의 vote_list.php파일을 불러씁니다///

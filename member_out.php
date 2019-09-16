@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -14,11 +14,11 @@
 // 멤버 정보 삭제
 	@mysql_query("delete from $member_table where no='$member[no]'") or error(mysql_error());
 
-  
+
 // 쪽지 테이블에서 멤버 정보 삭제
 	@mysql_query("delete from $get_memo_table where member_no='$member[no]'") or error(mysql_error());
 	@mysql_query("delete from $send_memo_table where member_no='$member[no]'") or error(mysql_error());
-	
+
 // 각종 게시판에서 현재 탈퇴한 멤버의 모든 정보를 삭제 (부하 문제로 인해서 주석 처리)
 	/*
 	$result=mysql_query("select name from $admin_table");
@@ -66,6 +66,6 @@ alert("정상적으로 탈퇴가 되었습니다.");
 opener.window.history.go(0);
 window.close();
 </script>
-<?
+<?php
     foot();
 ?>

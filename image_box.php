@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 회원마다 업로드된 이미지를 보여주는 페이지
  **************************************************************************/
@@ -47,15 +47,15 @@
 
 	@array_multisort ($image_list_time, SORT_DESC, SORT_NUMERIC,
                      $image_list, SORT_STRING, SORT_DESC);
-	
+
 	$dirSize = 0;
-	for($i=0;$i<count($image_list);$i++) $dirSize += filesize($path."/".$image_list[$i]); 
+	for($i=0;$i<count($image_list);$i++) $dirSize += filesize($path."/".$image_list[$i]);
 
 // 회원의 허용 용량 구하기
 	$maxDirSize = zReadFile($path."_maxsize.php");
 	if(!$maxDirSize) {
 		// 기본으로 10kb 의 용량을 제공
-		$maxDirSize = 100*1024; 
+		$maxDirSize = 100*1024;
 	} else {
 		// 파일의 주석처리 제거
 		$maxDirSize = str_replace("<?/*","",$maxDirSize);
@@ -80,7 +80,7 @@
 				if(file_exists($path."/".$upload_name[$i])) Error("같은 이름의 파일이 존재합니다.<br>다른 이름으로 입력하여 주시기 바랍니다");
 
 				$filesize = filesize($upload[$i]);
-	
+
 				// 업로드 용량 체크
 				if($maxDirSize < $filesize + $dirSize) Error("이미지 창고 사용 용량을 초과하였습니다.");
 
@@ -102,7 +102,7 @@
 
 // 삭제 명령 실행시
 	if($exec=="delete"&&strlen($no)&&$id) {
-		if(!z_unlink($path."/".$image_list[$no])) die("에러"); 
+		if(!z_unlink($path."/".$image_list[$no])) die("에러");
 		movepage("$PHP_SELF?id=$id&image_page=$image_page");
 		exit();
 	}
@@ -118,7 +118,7 @@
 	if(!$image_page) $image_page = 1;
 
 // 페이지가 전체 페이지보다 크면 페이지 번호 바꿈
-	if($image_page>$total_page) $image_page=$total_page; 
+	if($image_page>$total_page) $image_page=$total_page;
 
 // 이미지의 출력 크기 지정
 	$x_size = 75;
@@ -274,12 +274,12 @@ function alignset(str) {
 	<br>
 
 	<table border=0 width=98% cellspacing=0 cellpadding=2>
-<?
+<?php
 	$_t_width = (int)(100 / $h_num);
 	for($i=0;$i<$h_num;$i++) echo"<col width=$_t_width"."%></col>";
 ?>
 
-<?
+<?php
 	$_x = 1;
 
 	$startNum = ($image_page-1)*$listnum;
@@ -306,7 +306,7 @@ function alignset(str) {
 
 		if($_x<=1) echo "<tr bgcolor=white>";
 
-		
+
 ?>
 		<td align=center valign=top height=75>
 			<table border=0 cellspacing=1 cellpadding=2 width=100% height=100% bgcolor=666666>
@@ -325,7 +325,7 @@ function alignset(str) {
 			</tr>
 			</table>
 		</td>
-<?
+<?php
 		$_x ++;
 		if($_x > $h_num) {
 			$_x = 1;
@@ -361,7 +361,7 @@ function alignset(str) {
 	</tr>
 	<tr>
 		<td align=center height=40>
-			<a href=<?=$PHP_SELF?>?id=<?=$id?>&image_page=1>[First]</a><?
+			<a href=<?=$PHP_SELF?>?id=<?=$id?>&image_page=1>[First]</a><?php
 	$startPageNum = $image_page - 5;
 	if($startPageNum<0) $startPageNum=1;
 	$endPageNum = $image_page + 5 ;
@@ -419,6 +419,6 @@ function alignset(str) {
 	</table>
 </div>
 
-<?
+<?php
 	include "_foot.php";
 ?>

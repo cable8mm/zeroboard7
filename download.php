@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 공통 파일 include
  **************************************************************************/
@@ -21,7 +21,7 @@
     }
 
 	$data=mysql_fetch_array(mysql_query("select * from  `$t_board"."_$id` where no='$no'"));
-  
+
 // 다운로드;;
 	$filename="file_name".$filenum;
 	header("location:$data[$filename]");

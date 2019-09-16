@@ -1,4 +1,4 @@
-<?
+<?php
 	include "lib.php";
 
 	if(!$id&&!$group_no) Error("게시판 이름이나 그룹번호를 지정하여 주셔야 합니다.<br><br>(login.php?id=게시판이름   또는  login.php?group_no=번호)","");
@@ -64,13 +64,13 @@
 <input type=hidden name=s_url value="<?=$s_url?>">
 <input type=hidden name=referer value="<?=$referer?>">
 
-<?
+<?php
 	if($id) include $file;
 ?>
 
 </form>
 
-<?
+<?php
 	foot();
 	@mysql_close($connect);
 ?>

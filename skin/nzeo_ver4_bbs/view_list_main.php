@@ -1,4 +1,4 @@
-<?
+<?php
 	$subject = str_replace(">","><font class=list_han>",$subject);
 	$name = str_replace(">","><font class=list_han>",$name);
 

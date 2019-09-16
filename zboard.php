@@ -1,4 +1,4 @@
-<?
+<?php
 
 /***************************************************************************
  * 공통 파일 include
@@ -24,12 +24,12 @@
 // 검색 조건이 없을때 : 상황 -> 일반 정렬, 또는 정렬기준을 가지거나 Desc, Asc 일때.
 	else {
 
-		// 검색조건이 없고 정렬이 headnum에 의한 것일때;; 즉 일반 정렬일때;; 
+		// 검색조건이 없고 정렬이 headnum에 의한 것일때;; 즉 일반 정렬일때;;
 		if ($select_arrange=="headnum"&&$desc=="asc") {
 			while($division_data=mysql_fetch_array($division_result)) {
 				$sum=$sum+$division_data[num];
 				$division=$division_data[division];
-	
+
 				if($sum>=$start_num) {
 					$start_num=$start_num-($sum-$division_data[num]);
 					$_dbTimeStart = getmicrotime();
@@ -37,10 +37,10 @@
 					$result=mysql_query($que) or error(mysql_error());
 					$_dbTime += getmicrotime()-$_dbTimeStart;
 					$check1=1;
-	
+
 					$returnNum = mysql_num_rows($result);
-	
-					if($returnNum>=$page_num) { 
+
+					if($returnNum>=$page_num) {
 						break;
 					} else {
 						if($division>1) {
@@ -124,7 +124,7 @@
 
 
 /***************************************************************************
- * 각종 링크를 미리 지정하는 부분 
+ * 각종 링크를 미리 지정하는 부분
  **************************************************************************/
 
 // 글쓰기버튼
@@ -166,14 +166,14 @@
 
 
 /***************************************************************************
- * 정리한 데이타를 출력하는 부분 
+ * 정리한 데이타를 출력하는 부분
  **************************************************************************/
 
 // 헤더 출력
 	$_skinTimeStart = getmicrotime();
 	head('',"script_list.php");
 
-// 상단 현황 부분 출력 
+// 상단 현황 부분 출력
 	include "$dir/setup.php";
 	$_skinTime += getmicrotime()-$_skinTimeStart;
 

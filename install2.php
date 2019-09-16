@@ -1,4 +1,4 @@
-<?
+<?php
   require "lib.php";
   head();
 ?>
@@ -10,7 +10,7 @@
   <td height=30 colspan=3><img src=images/inst_top.gif></td>
 </tr>
 <tr>
-  <td> 
+  <td>
     <br>
 
   </td>
@@ -92,6 +92,6 @@
 </tr>
 </form>
 </table>
-<?
+<?php
   foot();
 ?>

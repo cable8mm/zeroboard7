@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 공통 파일 include
  **************************************************************************/
@@ -56,10 +56,10 @@
 
 		$category_kind.="</select>";
 	}
-  
+
 	if($mode=="modify") $title = " 글 수정하기 ";
 	elseif($mode=="reply") $title = " 답글 달기 ";
-	else $title = " 신규 글쓰기 "; 
+	else $title = " 신규 글쓰기 ";
 
 // 쿠키값을 이용;;
 	$name=$HTTP_SESSION_VARS["zb_writer_name"];
@@ -77,7 +77,7 @@
 
 			$name=stripslashes($data[name]); // 이름
 			$email=stripslashes($data[email]); // 메일
-			$homepage=stripslashes($data[homepage]); // 홈페이지 
+			$homepage=stripslashes($data[homepage]); // 홈페이지
 			$subject=$data[subject]=stripslashes($data[subject]); // 제목
 			$subject=str_replace("\"","&quot;",$subject);
 			$homepage=str_replace("\"","&quot;",$homepage);
@@ -126,11 +126,11 @@
 // 자료실 기능을 사용하는지 않하는지 표시;;
 	if(!$setup[use_pds]) { $hide_pds_start="<!--";$hide_pds_end="-->";}
 
-// HTML사용 체크버튼 
+// HTML사용 체크버튼
 	if($setup[use_html]==0) {
-		if(!$is_admin&&$member[level]>$setup[grant_html]) { 
+		if(!$is_admin&&$member[level]>$setup[grant_html]) {
 			$hide_html_start="<!--";
-			$hide_html_end="-->"; 
+			$hide_html_end="-->";
 		}
 	}
 
@@ -161,7 +161,7 @@
 	$a_preview="<a onfocus=blur() href='javascript:view_preview()'>";
 
 
-// HTML 출력 
+// HTML 출력
 
 	head(" onload=unlock() onunload=hideImageBox() ","script_write.php");
 

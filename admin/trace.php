@@ -1,4 +1,4 @@
-<?
+<?php
  $_zb_path="../";
 
  include "../lib.php";
@@ -82,12 +82,12 @@
 </table>
 </div>
 
-<?
+<?php
 if($keyword&&$s_que)
 {
   while($table_data=mysql_fetch_array($table_name_result))
   {
-   
+
    $table_name=$table_data[name];
    if($table_data[use_alllist]) $file="zboard.php"; else $file="view.php";
 
@@ -98,7 +98,7 @@ if($keyword&&$s_que)
 <br><br><br>
 
 &nbsp;&nbsp;<a href=../zboard.php?id=<?=$table_name?> target=_blank><font size=4 style=font-family:tahoma; color=black><?=$table_name?>&nbsp;<b>게시판</b></font></a><br>
-<?
+<?php
    while($data=mysql_fetch_array($result))
    {
     flush();
@@ -106,13 +106,13 @@ if($keyword&&$s_que)
 ?>
 
 &nbsp;&nbsp; [<?=stripslashes($data[name])?>] &nbsp;
-<a href=../<?=$file?>?id=<?=$table_name?>&no=<?=$data[no]?> target=_blank><?=$data[subject]?></a></b> 
+<a href=../<?=$file?>?id=<?=$table_name?>&no=<?=$data[no]?> target=_blank><?=$data[subject]?></a></b>
 &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 <font color=666666>(<font color=blue><?=date("Y-m-d H:i:s",$data[reg_date])?></font> / <font color=green><?=$data[ip]?></font>)</font>
 
 <img src=../images/t.gif border=0 height=20><Br>
 
-<?
+<?php
    }
 
    mysql_free_result($result);
@@ -126,7 +126,7 @@ if($keyword&&$s_que)
 <br><Br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href=../zboard.php?id=<?=$table_name?> target=_blank><font size=3 style=font-family:tahoma;><?=$table_name?><b>게시판</b> 의 간단한 답글</font></a>
 <br>
-<?
+<?php
     while($data=mysql_fetch_array($result))
     {
      flush();
@@ -137,7 +137,7 @@ if($keyword&&$s_que)
 <font color=666666>(<font color=blue><?=date("Y-m-d H:i:s",$data[reg_date])?></font> / <font color=green><?=$data[ip]?></font>)</font>
 <img src=../images/t.gif border=0 height=20><Br>
 
-<?
+<?php
     }
    }
   }
@@ -150,6 +150,6 @@ if($keyword&&$s_que)
 
 <br><Br><Br>
 
-<?
+<?php
  foot();
 ?>

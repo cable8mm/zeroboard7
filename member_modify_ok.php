@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -95,6 +95,6 @@ alert("회원님의 정보 수정이 제대로 처리되었습니다.");
 opener.window.history.go(0);
 window.close();
 </script>
-<?
+<?php
     foot();
 ?>

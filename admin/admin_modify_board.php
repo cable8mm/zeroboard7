@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 게시판 기본 기능 수정 페이지
  **************************************************************************/
@@ -58,7 +58,7 @@
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>스킨 &nbsp;</td>
   <td >&nbsp;&nbsp; <select name=skinname>
-<?
+<?php
  // /skin 디렉토리에서 디렉토리를 구함
  $skin_dir="skin";
  $handle=opendir($skin_dir);
@@ -96,7 +96,7 @@ function check2()
 
 <tr height=70 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>스킨 형식 설정 &nbsp;</td>
-  <td>&nbsp;&nbsp; 
+  <td>&nbsp;&nbsp;
 <? unset($check);$check[$data[only_board]]="checked";?>
        <input type=checkbox name=only_board value=1 <?=$check[1]?>> 게시판으로만 사용시 선택하여 주십시요. (스킨처리 속도가 줄어듭니다)<br>
        &nbsp;&nbsp; <input type=button class=input onclick=check1() style=border-color:#b0b0b0;height=18px value="게시판 형태"> 내용이 목록에 나오지 않는 게시판 형태의 스킨

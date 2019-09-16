@@ -1,4 +1,4 @@
-<?
+<?php
 	if(!defined("_zb_lib_included")) return;
 	if(eregi(":\/\/",$dir)||eregi("\.\.",$dir)) $dir ="./";
 

@@ -1,4 +1,4 @@
-<?
+<?php
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
@@ -59,17 +59,17 @@
 <div align=center><br>
 
 <script>
- function address_popup(num)                                                                                                      
- {                                                                                                                                
-  window.open('zipcode/search_zipcode.php?num='+num,'searchaddress','width=440,height=230,scrollbars=yes');                       
- } 
+ function address_popup(num)
+ {
+  window.open('zipcode/search_zipcode.php?num='+num,'searchaddress','width=440,height=230,scrollbars=yes');
+ }
  function check_submit()
  {
   if(write.password.value!=write.password1.value) {alert("패스워드가 일치하지 않습니다.");write.password.value="";write.password1.value=""; write.password.focus(); return false;}
   if(!write.name.value) { alert("이름을 입력하세요"); write.name.focus(); return false; }
 
-<? 
-	if($group_data[use_birth]) { 
+<?
+	if($group_data[use_birth]) {
 ?>
 
     if ( write.birth_1.value < 1000 || write.birth_1.value <= 0 )  {
@@ -91,8 +91,8 @@
         return false;
     }
 
-<?
-	} 
+<?php
+	}
 ?>
 
   return true;
@@ -147,9 +147,9 @@
 <? if($group_data[use_birth]) { ?>
   <tr height=28 align=right>
      <td style=font-family:Tahoma;font-size:8pt;><b>Birthday&nbsp;</td>
-     <td align=left>&nbsp;<input type=text name=birth_1 size=4 maxlength=4 value="<?=date("Y",$member[birth])?>" style=border-color:#d8b3b3 class=input> 년 
+     <td align=left>&nbsp;<input type=text name=birth_1 size=4 maxlength=4 value="<?=date("Y",$member[birth])?>" style=border-color:#d8b3b3 class=input> 년
                     &nbsp;<input type=text name=birth_2 size=2 maxlength=2 value="<?=date("m",$member[birth])?>" style=border-color:#d8b3b3 class=input> 월
-                    &nbsp;<input type=text name=birth_3 size=2 maxlength=2 value="<?=date("d",$member[birth])?>" style=border-color:#d8b3b3 class=input> 일 
+                    &nbsp;<input type=text name=birth_3 size=2 maxlength=2 value="<?=date("d",$member[birth])?>" style=border-color:#d8b3b3 class=input> 일
           <input type=checkbox value=1 name=open_birth <?=$check[$member[open_birth]]?>> 공개
   </tr>        <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
@@ -222,7 +222,7 @@
         </tr>
 <? } ?>
 
-<? if($group_data[use_home_address]) { ?> 
+<? if($group_data[use_home_address]) { ?>
   <tr height=28 align=right>
      <td style=font-family:Tahoma;font-size:8pt;>Home Address&nbsp;</td>
      <td align=left>&nbsp;<input type=text name=home_address size=40 maxlength=255 value="<?=$member[home_address]?>" style=border-color:#d8b3b3 class=input><input type=button value='검색' class=input style=border-color:#d8b3b3 onclick=address_popup(1)>
@@ -294,7 +294,7 @@
      <td align=left>&nbsp;<input type=file name=picture size=34 maxlength=255 style=border-color:#d8b3b3 class=input>
                  <? if($member[picture]) echo"<br>&nbsp;<img src='$member[picture]' border=0> <input type=checkbox name=del_picture value=1> 삭제"; ?>
                           <input type=checkbox value=1 name=open_picture <?=$check[$member[open_picture]]?>> 공개
-                          
+
      </td>
   </tr>        <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
@@ -327,7 +327,7 @@
   </form>
 </table>
 
-<?
+<?php
 	@mysql_close($connect);
 	foot();
 ?>

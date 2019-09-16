@@ -1,4 +1,4 @@
-<?
+<?php
 /***************************************************************************
  * 공통 파일 include
  **************************************************************************/
@@ -33,7 +33,7 @@
 		$f_subject=eregi_replace("([\_\-\./~@?=%&! ]+)","",strip_tags($subject));
 		$f_email=eregi_replace("([\_\-\./~@?=%&! ]+)","",strip_tags($email));
 		$f_homepage=eregi_replace("([\_\-\./~@?=%&! ]+)","",strip_tags($homepage));
-		for($i=0;$i<count($filter);$i++) 
+		for($i=0;$i<count($filter);$i++)
 		if(!isblank($filter[$i])) {
 			if(eregi($filter[$i],$f_memo)) Error("<b>$filter[$i]</b> 은(는) 등록하기에 적합한 단어가 아닙니다");
 			if(eregi($filter[$i],$f_name)) Error("<b>$filter[$i]</b> 은(는) 등록하기에 적합한 단어가 아닙니다");
@@ -43,7 +43,7 @@
 // 패스워드를 암호화
 	if($password) {
 		$temp=mysql_fetch_array(mysql_query("select password('$password')"));
-		$password=$temp[0];   
+		$password=$temp[0];
 	}
 
 // 관리자이거나 HTML허용레벨이 낮을때 태그의 금지유무를 체크

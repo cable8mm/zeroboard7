@@ -1,4 +1,4 @@
-<?
+<?php
 /**************************************************************************
  * 회원 목록 보는 페이지
  *************************************************************************/
@@ -16,7 +16,7 @@
 	$href="&keykind=$keykind&like=$like";
 
 	if($total_group_num>1) $s_que = " where group_no = '$group_no' ";
-	
+
 	if($level_search>0) {
 		if($s_que) $s_que.=" and "; else $s_que=" where ";
 		$s_que.=" level='$level_search' ";
@@ -30,13 +30,13 @@
 		} else {
 			$s_que .= " $keykind = password('$keyword') ";
 		}
-			
+
 		$href.="&keyword=$keyword&keykind=$keykind&like=$like";
 	}
 
 	$temp=mysql_fetch_array(mysql_query("select count(*) from $member_table $s_que"));
 	$total=$temp[0];
-  
+
 //페이지 구하는 부분
 	if(!$page_num)$page_num=10;
 	$href.="&page_num=$page_num";
@@ -66,7 +66,7 @@
   function select() {
     var i, chked=0;
     for(i=0;i<document.write.length;i++) {
-    if(document.write[i].type=='checkbox') { 
+    if(document.write[i].type=='checkbox') {
      if(document.write[i].checked) { document.write[i].checked=false; }
      else { document.write[i].checked=true; }
      }
@@ -77,9 +77,9 @@
   function sendmail()
   {
    var i, chked=0, cart="";
-   for(i=0;i<document.write.length;i++) 
+   for(i=0;i<document.write.length;i++)
    {
-    if(document.write[i].type=='checkbox') 
+    if(document.write[i].type=='checkbox')
     {
      if(document.write[i].checked)
      { cart = cart + "||" + document.write[i].value; chked=1; }
@@ -190,7 +190,7 @@
    <input type=hidden name=page_num value=<?=$page_num?>>
    <input type=hidden name=exec2 value="">
 
-<?
+<?php
   while($data=mysql_fetch_array($result))
   {
    if($data[level]==1) $grant_color="<font color=red><b>";
@@ -223,17 +223,17 @@
     <table border=0 cellspacing=0 cellpadding=1>
     <tr>
        <td width=20>&nbsp;</td>
-       <td><img src=images/t.gif height=1><br><select name=movelevel><?
+       <td><img src=images/t.gif height=1><br><select name=movelevel><?php
   $select[0]=" selected ";
   for($i=1;$i<=10;$i++)
   echo "<option value=$i $select[$i]>$i Level</option>";?></select></td><td><input type=button value='레벨변경' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=move_all()>
        </td><td><input type=button value='선택된 회원 삭제' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=delete_all()></td>
-<?
+<?php
   if($member[is_admin]==1)
   {
 ?>
        <td width=20>&nbsp;</td>
-       <td><img src=images/t.gif height=1><br><select name=movegroup><?
+       <td><img src=images/t.gif height=1><br><select name=movegroup><?php
   $temp_group=mysql_query("select * from $group_table where no!='$group_no'");
   $i=0;
   $select[0]=" selected ";
@@ -245,7 +245,7 @@
   ?></select></td>
     <td><input type=button value='그룹 변경' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=move_group()>&nbsp;</td>
 
-<?
+<?php
   }
 ?>
 
@@ -274,7 +274,7 @@
 		<img src=images/t.gif height=2><br>
   		<select name=level_search>
   			<option>레벨검색</option>
-<?
+<?php
 	$check[$level_search]="selected";
 	for($i=1;$i<=10;$i++) echo "<option value=$i $check[$i]>$i Level</option>";
 ?>
@@ -295,7 +295,7 @@
 </tr>
 <tr>
 	<td style=font-family:Tahoma;font-size:8pt;font-weight:bold; align=right>
-		한 페이지당 표시될 회원수	
+		한 페이지당 표시될 회원수
 		<input type=text name=page_num value='<?echo $page_num;?>' style=width:30px;>
     </td>
 </tr>
@@ -306,7 +306,7 @@
 <br>
 
 <font color=#ffffff style=font-size:8pt;font-family:Tahoma;>
-<?
+<?php
 //페이지 나타내는 부분
 $show_page_num=10;
 $start_page=(int)(($page-1)/$show_page_num)*$show_page_num;

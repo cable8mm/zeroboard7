@@ -1,4 +1,4 @@
-<?
+<?php
 	// 현재 그룹의 데이타를 구함
 	$group_data=mysql_fetch_array(mysql_query("select * from $group_table where no='$group_no'"));
 
@@ -31,7 +31,7 @@
 	$total_page=(int)(($total-1)/$page_num)+1;
 
 	// 게시물을 구해옴
-	$result=@mysql_query("select * from $admin_table where $s_que order by no desc limit $start_num,$page_num",$connect) 
+	$result=@mysql_query("select * from $admin_table where $s_que order by no desc limit $start_num,$page_num",$connect)
 	or Error("게시판의 정보를 DB로 부터 가져오는 부분에서 에러가 발생했습니다");
 ?>
 <script>
@@ -47,7 +47,7 @@ function board_recover(a,b)
 <table border=0 cellspacing=1 cellpadding=3 width=100% bgcolor=#b0b0b0>
   <tr height=30><td bgcolor=#3d3d3d colspan=9><img src=images/admin_webboard.gif></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=9><img src=images/t.gif height=1></td></tr>
-<?
+<?php
 // 앞에 붙는 가상번호
 $number=$total-($page-1)*$page_num;
 
@@ -103,7 +103,7 @@ while($data=mysql_fetch_array($result))
 
 </div><div align=center>
 <br>
-<?
+<?php
 //페이지 나타내는 부분
 $show_page_num=10;
 $start_page=(int)(($page-1)/$show_page_num)*$show_page_num;

@@ -1,4 +1,4 @@
-<?
+<?php
 /*********************************************************************
  * 회원 정보 변경에 대한 처리
  *********************************************************************/
@@ -26,7 +26,7 @@
 	}
 
 
-// 회원전체 삭제하는 부분 
+// 회원전체 삭제하는 부분
 
 	if($exec2=="deleteall") {
 		for($i=0;$i<sizeof($cart);$i++) {
@@ -36,12 +36,12 @@
 	}
 
 
-// 회원 게시판 권한 취소시키는 부분 
+// 회원 게시판 권한 취소시키는 부분
 
 	if($exec2=="modify_member_board_manager") {
 
 		$_temp=mysql_fetch_array(mysql_query("select * from $member_table where no = '$member_no'",$connect));
-	
+
 		$__temp = split(",",$_temp[board_name]);
 
 		$_st = "";
@@ -57,7 +57,7 @@
 	}
 
 
-// 회원 게시판 권한 추가시키는 부분 
+// 회원 게시판 권한 추가시키는 부분
 
 	if($exec2=="add_member_board_manager") {
 
@@ -70,7 +70,7 @@
 	}
 
 
-// 회원 권한 변경하는 부분 
+// 회원 권한 변경하는 부분
 
 	if($exec2=="moveall") {
 		for($i=0;$i<sizeof($cart);$i++) {
@@ -80,7 +80,7 @@
 	}
 
 
-// 회원 그룹 변경하는 부분 
+// 회원 그룹 변경하는 부분
 
 	if($exec2=="move_group"&&$member[is_admin]==1) {
 		for($i=0;$i<sizeof($cart);$i++) {
@@ -92,7 +92,7 @@
 	}
 
 
-// 회원삭제하는 부분 
+// 회원삭제하는 부분
 
 	if($exec2=="del") {
 		del_member($no);
@@ -100,7 +100,7 @@
 	}
 
 
-// 회원정보 변경하는 부분 
+// 회원정보 변경하는 부분
 
 	if($exec2=="modify_member_ok") {
 
@@ -111,7 +111,7 @@
 		$birth=mktime(0,0,0,$birth_2,$birth_3,$birth_1);
 
 		if($member[no]==$member_no) {
-			$is_admin = $member[is_admin];	
+			$is_admin = $member[is_admin];
 			$level = $member[level];
 		}
 
@@ -140,7 +140,7 @@
 
 		@mysql_query($que) or Error("회원정보 수정시에 에러가 발생하였습니다 ".mysql_error());
 
-		// 회원의 소개 사진 
+		// 회원의 소개 사진
 		if($HTTP_POST_FILES[picture]) {
 			$picture = $HTTP_POST_FILES[picture][tmp_name];
 			$picture_name = $HTTP_POST_FILES[picture][name];

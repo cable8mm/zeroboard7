@@ -9,13 +9,13 @@
   <td background=<?=$dir?>/4.gif><img src=<?=$dir?>/4.gif border=0></td>
   <td align=center><b>
 
-<?
+<?php
  if(!$mode||$mode=="write") echo "새로운 설문조사 작성";
  elseif($mode=="reply") echo "설문조사 항목 추가";
  else echo"설문조사 제목 수정";
 ?>
   </b><br>
-<?
+<?php
  if($mode!="modify") $subject="";
 ?></b><br><br>
 
@@ -44,7 +44,7 @@
    <table border=0 width=100% cellsapcing=0 cellpadding=2>
    <tr>
    <td valign=top>
-  
+
   <table border=0 cellsapcing=0 cellpadding=3 width=100% height=100%>
 
 <?=$hide_category_start?>
@@ -71,7 +71,7 @@
      <td> <input type=password name=password <?=size(10)?> maxlength=20 class=input> </td>
   </tr>
   <tr>
-     <td width=60 align=center>설문 작성인</td> 
+     <td width=60 align=center>설문 작성인</td>
      <td> <input type=text name=name value="<?=$name?>" <?=size(10)?> maxlength=20 class=input> </td>
   </tr>
   <?=$hide_end?>

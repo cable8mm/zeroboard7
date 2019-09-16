@@ -1,4 +1,4 @@
-<?
+<?php
 	include "lib.php";
 	include "schema.sql";
 
@@ -17,7 +17,7 @@
 // 관리자 테이블 생성
 	if(!isTable($admin_table,$dbname)) @mysql_query($admin_table_schema, $connect) or Error("관리자 테이블 생성 실패","");
 	else $admin_table_exist=1;
-  
+
 // 그룹테이블 생성
 	if(!isTable($group_table,$dbname)) @mysql_query($group_table_schema, $connect) or Error("그룹 테이블 생성 실패","");
 	else $group_table_exist=1;

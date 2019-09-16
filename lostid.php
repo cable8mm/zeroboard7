@@ -1,4 +1,4 @@
-<?
+<?php
 	include "lib.php";
 
 	// 웹마스터 E-mail
@@ -39,7 +39,7 @@ function check_submit()
 	</table>
 	<table border=0 cellspacing=0 cellpadding=0 width=100% bgcolor=white>
 	<col width=7></col><col width=></col><col width=7>
-	<tr> 
+	<tr>
 		<td><img src=images/t.gif border=0 width=7></td>
 		<td>
 			<table border=0 cellspacing=0 cellpadding=3>
@@ -68,7 +68,7 @@ function check_submit()
 </tr>
 </table>
 <img src=images/t.gif border=0 height=5><br>
-<?
+<?php
 	@mysql_close($connect);
 	foot();
 ?>
