@@ -35,3 +35,5 @@ if (!function_exists('spliti')) {
         return preg_split('/' . $pattern . '/i', $subject, $limit);
     }
 }
+
+$PHP_SELF = $_SERVER['PHP_SELF'];
