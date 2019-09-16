@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/macos,windows,composer,phpstorm,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=macos,windows,composer,phpstorm,visualstudiocode
+# Created by https://www.gitignore.io/api/git,macos,windows,composer,phpstorm,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=git,macos,windows,composer,phpstorm,visualstudiocode
 
 ### Composer ###
 composer.phar
@@ -9,6 +9,21 @@ composer.phar
 # Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
 # You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
 # composer.lock
+
+### Git ###
+# Created by git for backups. To disable backups in Git:
+# $ git config --global mergetool.keepBackup false
+*.orig
+
+# Created by git when using merge tools for conflicts
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*_BACKUP_*.txt
+*_BASE_*.txt
+*_LOCAL_*.txt
+*_REMOTE_*.txt
 
 ### macOS ###
 # General
@@ -156,4 +171,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/macos,windows,composer,phpstorm,visualstudiocode
+# End of https://www.gitignore.io/api/git,macos,windows,composer,phpstorm,visualstudiocode
