@@ -11,7 +11,7 @@ include('z7_deprecates.php');
  ******************************************************************************/
 
     // W3C P3P 규약설정
-    @header ("P3P : CP=\"ALL CURa ADMa DEVa TAIa OUR BUS IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC OTC\"");
+    @header ("P3P CP=\"ALL CURa ADMa DEVa TAIa OUR BUS IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC OTC\"");
 
 	// 현재 버젼
 	$zb_version = "4.1 pl8";
@@ -19,13 +19,15 @@ include('z7_deprecates.php');
 	/*******************************************************************************
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
  	 ******************************************************************************/
- 	@error_reporting(E_ALL ^ E_NOTICE);
-    foreach($HTTP_GET_VARS as $key=>$val) $$key = del_html($val);
-	@extract($HTTP_POST_VARS);
-	@extract($HTTP_SERVER_VARS);
-	@extract($HTTP_ENV_VARS);
+ 	error_reporting(E_ALL ^ E_NOTICE);
+    foreach ($_GET as $key => $val) {
+        $$key = del_html($val);
+    }
+	extract($_POST);
+	extract($_SERVER);
+	extract($_ENV);
 
-    $page = (int)$page;
+	$page = (int)$page;
 
 	$temp_filename=realpath(__FILE__);
 	if($temp_filename) $config_dir=eregi_replace("lib.php","",$temp_filename);
@@ -399,38 +401,52 @@ include('z7_deprecates.php');
 		if($setup[skinname]) {
 			?>
 <html lang="ko">
+
 <head>
-	<title><?=$setup[title]?></title>
+	<title><?=$setup[title]?>
+	</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel=StyleSheet HREF=<?=$stylefile?> type=text/css title=style>
+	<link rel=StyleSheet HREF=<?=$stylefile?> type=text/css
+	title=style>
 	<?if($setup[use_formmail]) echo $zbLayerScript;?>
 	<?if($scriptfile) include "script/".$scriptfile;?>
 </head>
-<body topmargin='0'  leftmargin='0' marginwidth='0' marginheight='0' <?=$body?><?php
+
+<body topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' <?=$body?><?php
 
 			if($setup[bg_color]) echo " bgcolor=".$setup[bg_color]." ";
 			if($setup[bg_image]) echo " background=".$setup[bg_image]." ";
 
 			?>>
-			<?php
+	<?php
 			if($group[header_url]) { @include $group[header_url]; }
 			if($setup[header_url]) { @include $setup[header_url]; }
 			if($group[header]) echo stripslashes($group[header]);
 			if($setup[header]) echo stripslashes($setup[header]);
 			?>
-			<table border=0 cellspacing=0 cellpadding=0 width=<?=$width?> height=1 style="table-layout:fixed;"><col width=100%></col><tr><td><img src=images/t.gif border=0 width=98% height=1 name=zb_get_table_width><br><img src=images/t.gif border=0 name=zb_target_resize width=1 height=1></td></tr></table>
-			<?php
+	<table border=0 cellspacing=0 cellpadding=0 width=<?=$width?>
+		height=1 style="table-layout:fixed;">
+		<col width=100%>
+		</col>
+		<tr>
+			<td><img src=images/t.gif border=0 width=98% height=1 name=zb_get_table_width><br><img src=images/t.gif
+					border=0 name=zb_target_resize width=1 height=1></td>
+		</tr>
+	</table>
+	<?php
 		} else {
 
 			?>
-<html lang="ko">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<link rel=StyleSheet HREF=style.css type=text/css title=style>
-	<?=$script?>
-</head>
-<body topmargin='0'  leftmargin='0' marginwidth='0' marginheight='0' <?=$body?>>
-			<?php
+	<html lang="ko">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<link rel=StyleSheet HREF=style.css type=text/css title=style>
+		<?=$script?>
+	</head>
+
+	<body topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' <?=$body?>>
+		<?php
 				if($group[header_url]) { @include $group[header_url]; }
 				if($group[header]) echo stripslashes($group[header]);
 		}
@@ -454,32 +470,35 @@ include('z7_deprecates.php');
 		if($setup[skinname]) {
 			?>
 
-			<table border=0 cellpadding=0 cellspacing=0 height=20 width=<?=$width?>>
+		<table border=0 cellpadding=0 cellspacing=0 height=20 width=<?=$width?>>
 			<tr>
 				<td align=right style=font-family:tahoma,굴림;font-size:8pt;line-height:150%;letter-spacing:0px>
-					<font style=font-size:7pt>Copyright 1999-<?=date("Y")?></font> <a href=http://www.zeroboard.com target=_blank onfocus=blur()><font style=font-family:tahoma,굴림;font-size:8pt;>Zeroboard</a> <?=$maker?>
+					<font style=font-size:7pt>Copyright 1999-<?=date("Y")?>
+					</font> <a href=http://www.zeroboard.com target=_blank onfocus=blur()>
+						<font style=font-family:tahoma,굴림;font-size:8pt;>Zeroboard
+					</a> <?=$maker?>
 				</td>
 			</tr>
-			</table>
+		</table>
 
-			<?php
+		<?php
 			if($_zbResizeCheck) {
 			?>
-			<!-- 이미지 리사이즈를 위해서 처리하는 부분 -->
-			<script>
-				function zb_img_check(){
-					var zb_main_table_width = document.zb_get_table_width.width;
-					var zb_target_resize_num = document.zb_target_resize.length;
-					for(i=0;i<zb_target_resize_num;i++){
-						if(document.zb_target_resize[i].width > zb_main_table_width) {
-							document.zb_target_resize[i].width = zb_main_table_width;
-						}
+		<!-- 이미지 리사이즈를 위해서 처리하는 부분 -->
+		<script>
+			function zb_img_check() {
+				var zb_main_table_width = document.zb_get_table_width.width;
+				var zb_target_resize_num = document.zb_target_resize.length;
+				for (i = 0; i < zb_target_resize_num; i++) {
+					if (document.zb_target_resize[i].width > zb_main_table_width) {
+						document.zb_target_resize[i].width = zb_main_table_width;
 					}
 				}
-				window.onload = zb_img_check;
-			</script>
+			}
+			window.onload = zb_img_check;
+		</script>
 
-			<?php
+		<?php
 			}
 
 			if($setup[footer]) echo stripslashes($setup[footer]);
@@ -488,9 +507,10 @@ include('z7_deprecates.php');
 			if($group[footer_url]) { @include $group[footer_url]; }
 			?>
 
-</body>
-</html>
-			<?php
+	</body>
+
+	</html>
+	<?php
 
 		} else {
 
@@ -498,9 +518,10 @@ include('z7_deprecates.php');
 			if($group[footer_url]) { @include $group[footer_url]; }
 
 			?>
-			</body>
-			</html>
-			<?php
+</body>
+
+</html>
+<?php
 		}
 
 		$_phpExcutedTime = (getmicrotime()-$_startTime)-($_sessionEnd-$_sessionStart)-($_nowConnectEnd-$_nowConnectStart)-$_dbTime-$_skinTime;
@@ -572,11 +593,11 @@ include('z7_deprecates.php');
 			$message=str_replace("<br>","\\n",$message);
 			$message=str_replace("\"","\\\"",$message);
 			?>
-			<script>
-				alert("<?=$message?>");
-				window.close();
-			</script>
-			<?php
+<script>
+	alert("<?=$message?>");
+	window.close();
+</script>
+<?php
 		} else {
 
 			head();
@@ -1057,4 +1078,3 @@ include('z7_deprecates.php');
 		$directory->close();
 		@RmDir($path);
 	}
-?>
