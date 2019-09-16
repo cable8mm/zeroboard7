@@ -40,8 +40,8 @@
 
   <tr height=23 align=center bgcolor=#e0e0e0>
     <td><input type=checkbox name=c[] value=<? echo $data[no];?>></td>
-    <td><img src=images/t.gif height=3><br><?echo $data[name];?></td>
-    <td style=font-family:Tahoma;font-size:8pt><?echo $total_num;?></td>
+    <td><img src=images/t.gif height=3><br><?php echo $data[name];?></td>
+    <td style=font-family:Tahoma;font-size:8pt><?php echo $total_num;?></td>
     <?="<td style=font-family:Tahoma;font-size:8pt><a href=$PHP_SELF?exec=view_board&no=$no&exec2=modify_category&group_no=$group_no&page=$page&page_num=$page_num&category_no=$data[no]>Modify</a></td>"?>
     <td style=font-family:Tahoma;font-size:8pt>
 <?php

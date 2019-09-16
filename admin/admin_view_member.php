@@ -58,7 +58,7 @@
 <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=10><img src=images/t.gif height=1></td></tr>
 <tr bgcolor=bbbbbb>
 	<td align=right colspan=10 height=25 colspan=2 style=font-family:Tahoma;font-size:8pt;>
-	그룹이름 : <b><?=$group_data[name]?></b> , 전체 회원수 : <b><?echo $total_member;?></b> , <b><?echo $total;?></b> 개 검색&nbsp;&nbsp;&nbsp;</td>
+	그룹이름 : <b><?=$group_data[name]?></b> , 전체 회원수 : <b><?php echo $total_member;?></b> , <b><?php echo $total;?></b> 개 검색&nbsp;&nbsp;&nbsp;</td>
 </tr>
 <!-- 모두삭제하는 거랑, 변한변경, 그룹이동 버튼 표시 -->
 <script>
@@ -287,7 +287,7 @@
 			<option value="jumin" <?if($keykind=="jumin")echo "selected";?>>Jumin</option>
 			<option value="comment" <?if($keykind=="comment")echo "selected";?>>Comment</option>
 		</select>
-		<input type=text name=keyword value='<?echo $keyword;?>'>
+		<input type=text name=keyword value='<?php echo $keyword;?>'>
 		<input type=checkbox name=like value=1 <?if($like) echo"checked";?> onclick='alert("Include 체크시 검색어를 포함하는 대상을 검색합니다.\n\n체크시 : *검색어*\n\n체크를 하지 않을경우 완전한 대상을 검색하며 더 빠릅니다\n\nComment를 제외하고는 체크하지 않는 것을 권해드립니다")'> <font style=color:#ffffff;font-size:8pt;font-family:Tahoma;>Include</font> &nbsp;
 		<input type=submit value=' 검색 '  style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; >
 		<input type=button value=' 처음으로 ' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=location.href="<?=$PHP_SELF?>?exec=<?=$exec?>&group_no=<?=$group_no?>">
@@ -296,7 +296,7 @@
 <tr>
 	<td style=font-family:Tahoma;font-size:8pt;font-weight:bold; align=right>
 		한 페이지당 표시될 회원수
-		<input type=text name=page_num value='<?echo $page_num;?>' style=width:30px;>
+		<input type=text name=page_num value='<?php echo $page_num;?>' style=width:30px;>
     </td>
 </tr>
 </form>

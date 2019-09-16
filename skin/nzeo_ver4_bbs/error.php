@@ -6,7 +6,7 @@
 </tr>
 <tr class=list0>
     <td align=center height=50 class=list_han>
-      <?echo $message;?>
+      <?php echo $message;?>
 	</td>
 </tr>
 </table>
@@ -24,7 +24,7 @@
   {
 ?>
 	<br>
-  <div align=center><a href=# onclick=location.href="<?echo $url;?>" onfocus=blur()><font class=list_han>페이지 이동</font></a>
+  <div align=center><a href=# onclick=location.href="<?php echo $url;?>" onfocus=blur()><font class=list_han>페이지 이동</font></a>
 
 <?php
   }
