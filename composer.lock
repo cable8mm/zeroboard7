@@ -4,8 +4,42 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05221c7f3ddd2efdad5624386599e012",
+    "content-hash": "54802ae571f03633d024c1bddbb9798d",
     "packages": [
+        {
+            "name": "bbrala/php7-ereg-shim",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bbrala/php7-ereg-shim.git",
+                "reference": "958d1ca7b0c3f39e83d95f72409e740dff72029b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bbrala/php7-ereg-shim/zipball/958d1ca7b0c3f39e83d95f72409e740dff72029b",
+                "reference": "958d1ca7b0c3f39e83d95f72409e740dff72029b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/ereg.php"
+                ]
+            },
+            "notification-url": "https://repo.packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Björn Brala",
+                    "email": "github@bjornbrala.com",
+                    "homepage": "http://bjornbrala.com"
+                }
+            ],
+            "description": "Shim for ereg functions",
+            "time": "2016-10-14T12:27:50+00:00"
+        },
         {
             "name": "dshafik/php7-mysql-shim",
             "version": "0.2.0",

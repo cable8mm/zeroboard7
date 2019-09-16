@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-include('z7_deprecates.php');
+include('z7_shim.php');
 /******************************************************************************
  * Zeroboard library
  *
