@@ -53,7 +53,7 @@ require "lib.php";
 ?>
  <img src=images/vi_B_userinfo.gif border=0 onclick="alert('개인정보를 공개하지 않았습니다')">
 
-<? }?>
+<?php  }?>
 
  </td>
   </tr>
@@ -100,7 +100,7 @@ require "lib.php";
   <td align=right><img src=images/memo_id.gif></td>
   <td valign=bottom>&nbsp;<font color=brown><b><?=$data[user_id]?> (<?=$data[name]?>)</td>
 </tr>
-<? } ?>
+<?php  } ?>
 
 
 <tr>

@@ -410,8 +410,8 @@ include('z7_shim.php');
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<link rel=StyleSheet HREF=<?=$stylefile?> type=text/css
 	title=style>
-	<?if($setup[use_formmail]) echo $zbLayerScript;?>
-	<?if($scriptfile) include "script/".$scriptfile;?>
+	<?php if($setup[use_formmail]) echo $zbLayerScript;?>
+	<?php if($scriptfile) include "script/".$scriptfile;?>
 </head>
 
 <body topmargin='0' leftmargin='0' marginwidth='0' marginheight='0' <?=$body?><?php
@@ -675,7 +675,7 @@ include('z7_shim.php');
 		$_str = trim(zReadFile($filename));
 		$num = 0;
 		if($_str) {
-			$_str = str_replace("<? die('Access Denied');/*","",$_str);
+			$_str = str_replace("<?php  die('Access Denied');/*","",$_str);
 			$_str = str_replace("*/?>","",$_str);
 			$_connector = explode(":",$_str);
 			$_sizeConnector = count($_connector);
@@ -694,7 +694,7 @@ include('z7_shim.php');
 		}
 		$_realNowConnector.=$_nowtime.$div;
 		//check_fileislocked($filename);
-		zWriteFile($filename, "<? die('Access Denied');/*".$_realNowConnector."*/?>");
+		zWriteFile($filename, "<?php  die('Access Denied');/*".$_realNowConnector."*/?>");
 		return $num;
 	}
 
@@ -704,7 +704,7 @@ include('z7_shim.php');
 		$_str = trim(zReadFile($filename));
 		$num = 0;
 		if($_str) {
-			$_str = str_replace("<? die('Access Denied');/*","",$_str);
+			$_str = str_replace("<?php  die('Access Denied');/*","",$_str);
 			$_str = str_replace("*/?>","",$_str);
 			$_connector = explode(":",$_str);
 			$_sizeConnector = count($_connector);
@@ -723,7 +723,7 @@ include('z7_shim.php');
 		}
 		if($FLAG) {
 			//check_fileislocked($filename);
-			zWriteFile($filename, "<? die('Access Denied');/*".$_realNowConnector."*/?>");
+			zWriteFile($filename, "<?php  die('Access Denied');/*".$_realNowConnector."*/?>");
 		}
 		return $num;
 	}
@@ -771,7 +771,7 @@ include('z7_shim.php');
 
 		$zbSessionID = md5($no."-^A-".time());
 
-		$newStr = "<?/*\n$no\n".time()."\n*/?>";
+		$newStr = "<?php /*\n$no\n".time()."\n*/?>";
 
 		zWriteFile($_zb_path.$_zbDefaultSetup[session_path]."/zbSessionID_".$zbSessionID.".php", $newStr);
 
@@ -791,7 +791,7 @@ include('z7_shim.php');
 	function getDefaultSetup() {
 		global $_zb_path;
 		$data = zReadFile($_zb_path."setup.php");
-		$data = str_replace("<?/*","",$data);
+		$data = str_replace("<?php /*","",$data);
 		$data = str_replace("*/?>","",$data);
 		$data = explode("\n",$data);
 		$_c = count($data);

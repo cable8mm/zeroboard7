@@ -8,11 +8,11 @@
 <!--
 function postaddr(var1)
 {
-<? if($num==1){?>
+<?php  if($num==1){?>
  opener.document.write.home_address.value=var1;
-<?} else{?>
+<?php } else{?>
  opener.document.write.office_address.value=var1;
-<?}?>
+<?php }?>
  window.close();
 }
 -->

@@ -140,7 +140,7 @@
    return false;
   }
 
-<?if($member[is_admin]==1)
+<?php if($member[is_admin]==1)
   {
 ?>
   function move_group()
@@ -165,7 +165,7 @@
    }
    return false;
   }
-<? } ?>
+<?php  } ?>
 </script>
 
 <tr align=center height=25 bgcolor=#a0a0a0>
@@ -280,15 +280,15 @@
 ?>
 		</select>
 		<select name=keykind>
-			<option value="user_id" <?if($keykind=="user_id")echo "selected";?>>User ID</option>
-			<option value="name" <?if($keykind=="name")echo "selected";?>>Name</option>
-			<option value="homepage" <?if($keykind=="homepage")echo "selected";?>>Homepage</option>
-			<option value="email" <?if($keykind=="email")echo "selected";?>>Email</option>
-			<option value="jumin" <?if($keykind=="jumin")echo "selected";?>>Jumin</option>
-			<option value="comment" <?if($keykind=="comment")echo "selected";?>>Comment</option>
+			<option value="user_id" <?php if($keykind=="user_id")echo "selected";?>>User ID</option>
+			<option value="name" <?php if($keykind=="name")echo "selected";?>>Name</option>
+			<option value="homepage" <?php if($keykind=="homepage")echo "selected";?>>Homepage</option>
+			<option value="email" <?php if($keykind=="email")echo "selected";?>>Email</option>
+			<option value="jumin" <?php if($keykind=="jumin")echo "selected";?>>Jumin</option>
+			<option value="comment" <?php if($keykind=="comment")echo "selected";?>>Comment</option>
 		</select>
 		<input type=text name=keyword value='<?php echo $keyword;?>'>
-		<input type=checkbox name=like value=1 <?if($like) echo"checked";?> onclick='alert("Include 체크시 검색어를 포함하는 대상을 검색합니다.\n\n체크시 : *검색어*\n\n체크를 하지 않을경우 완전한 대상을 검색하며 더 빠릅니다\n\nComment를 제외하고는 체크하지 않는 것을 권해드립니다")'> <font style=color:#ffffff;font-size:8pt;font-family:Tahoma;>Include</font> &nbsp;
+		<input type=checkbox name=like value=1 <?php if($like) echo"checked";?> onclick='alert("Include 체크시 검색어를 포함하는 대상을 검색합니다.\n\n체크시 : *검색어*\n\n체크를 하지 않을경우 완전한 대상을 검색하며 더 빠릅니다\n\nComment를 제외하고는 체크하지 않는 것을 권해드립니다")'> <font style=color:#ffffff;font-size:8pt;font-family:Tahoma;>Include</font> &nbsp;
 		<input type=submit value=' 검색 '  style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; >
 		<input type=button value=' 처음으로 ' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=location.href="<?=$PHP_SELF?>?exec=<?=$exec?>&group_no=<?=$group_no?>">
 	</td>

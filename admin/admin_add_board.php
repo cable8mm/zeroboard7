@@ -41,14 +41,14 @@
 <form method=post action=<?=$PHP_SELF?> name=write onsubmit="return check_submit();">
 <input type=hidden name=no value=<?php echo $data[no];?>>
 <input type=hidden name=exec value=view_board>
-<input type=hidden name=exec2 value=<?if($no) echo"modify_ok"; else echo"add_ok";?>>
+<input type=hidden name=exec2 value=<?php if($no) echo"modify_ok"; else echo"add_ok";?>>
 <input type=hidden name=page value=<?=$page?>>
 <input type=hidden name=group_no value=<?=$group_no?>>
 </tr>
 <!-- 기본설정 -->
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>게시판 이름 &nbsp;</td>
-  <td >&nbsp;&nbsp; <input type=text name=name value='<?php echo $data[name];?>' <?if($no) echo"readonly"; ?> size=20 maxlength=40 class=input style=border-color:#b0b0b0></td>
+  <td >&nbsp;&nbsp; <input type=text name=name value='<?php echo $data[name];?>' <?php if($no) echo"readonly"; ?> size=20 maxlength=40 class=input style=border-color:#b0b0b0></td>
 </tr>
 
 <!-- 스킨 설정 -->
@@ -94,7 +94,7 @@ function check2()
 <tr height=70 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>스킨 형식 설정&nbsp;</td>
   <td>&nbsp;&nbsp;
-<? unset($check);$check[$data[only_board]]="checked";?>
+<?php  unset($check);$check[$data[only_board]]="checked";?>
        <input type=checkbox name=only_board value=1 checked> 게시판으로만 사용시 선택하여 주십시요. (스킨처리 속도가 향상됩니다.)<br>
        &nbsp;&nbsp; <input type=button class=input onclick=check1() style=border-color:#b0b0b0;height=18px value="게시판 형태"> 내용이 목록에 나오지 않는 게시판 형태의 스킨
        <br>
@@ -196,7 +196,7 @@ function check2()
 
 <tr height=25 bgcolor=#bbbbbb><td colspan=2  align=center  style=font-family:Tahoma;font-size:8pt;><b>추가 기능 설정</b></td></tr>
 
-<? unset($check);$check[$data[use_alllist]]="checked";?>
+<?php  unset($check);$check[$data[use_alllist]]="checked";?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>전체 목록 출력 (글내용 보기)&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -205,7 +205,7 @@ function check2()
 </tr>
 
 
-<? unset($check);$check[$data[use_category]]="checked";?>
+<?php  unset($check);$check[$data[use_category]]="checked";?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>카테고리 사용&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -213,7 +213,7 @@ function check2()
   </td>
 </tr>
 
-<? unset($check);$check[$data[use_html]]="checked";?>
+<?php  unset($check);$check[$data[use_html]]="checked";?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>HTML 사용여부&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -223,7 +223,7 @@ function check2()
   </td>
 </tr>
 
-<? unset($check);if($data[use_showreply]) $check="checked"; else $check=""; ?>
+<?php  unset($check);if($data[use_showreply]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>답변글 목록에 출력&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -231,7 +231,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_filter]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_filter]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>불량단어 필터링 사용&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -240,7 +240,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_status]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_status]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>미리보기 기능&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -249,7 +249,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_homelink]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_homelink]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>관련 사이트 링크 #1&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -258,7 +258,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_filelink]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_filelink]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>관련 사이트 링크 #2&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -268,7 +268,7 @@ function check2()
 </tr>
 
 
-<? if($data[use_pds]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_pds]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>자료실 기능&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -301,7 +301,7 @@ function check2()
 </tr>
 
 
-<? if($data[use_cart]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_cart]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>바구니 기능&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -310,7 +310,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_autolink]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_autolink]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>자동링크 기능&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -319,7 +319,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_showip]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_showip]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>Image Box 사용&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -328,7 +328,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_comment]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_comment]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>간단한 답글 기능&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -337,7 +337,7 @@ function check2()
   </td>
 </tr>
 
-<? if($data[use_formmail]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_formmail]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>글쓴이 서브메뉴 사용&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -345,7 +345,7 @@ function check2()
 	 허용시 글쓴이의 이름 클릭시 서브 레이어 메뉴 표시
   </td>
 </tr>
-<? if($data[use_secret]) $check="checked"; else $check=""; ?>
+<?php  if($data[use_secret]) $check="checked"; else $check=""; ?>
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>비밀글 사용&nbsp;</td>
   <td >&nbsp;&nbsp;
@@ -357,7 +357,7 @@ function check2()
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>불량단어 등록&nbsp;</td>
   <td >&nbsp;&nbsp;
-     <textarea name=filter cols=70 rows=6 class=textarea style=border-color:#b0b0b0><?include "admin/base_filter.txt";?></textarea><br> &nbsp;&nbsp;
+     <textarea name=filter cols=70 rows=6 class=textarea style=border-color:#b0b0b0><?php include "admin/base_filter.txt";?></textarea><br> &nbsp;&nbsp;
      불량단어 필터링 목록입니다. <b>, (콤마)</b> 로 연결하세요
   </td>
 </tr>
@@ -365,7 +365,7 @@ function check2()
 <tr height=25 bgcolor=#e0e0e0>
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>허용할 HTML 태그&nbsp;</td>
   <td >&nbsp;&nbsp;
-     <textarea name=avoid_tag cols=70 rows=6 class=textarea style=border-color:#b0b0b0><?include "admin/base_avoid_tag.txt";?></textarea><br> &nbsp;&nbsp; HTML을 부분허용했을때 허용하여 주는 태그입니다.<br>
+     <textarea name=avoid_tag cols=70 rows=6 class=textarea style=border-color:#b0b0b0><?php include "admin/base_avoid_tag.txt";?></textarea><br> &nbsp;&nbsp; HTML을 부분허용했을때 허용하여 주는 태그입니다.<br>
        &nbsp;&nbsp; &lt;,&gt;를 태그 이름만을 입력하세요.<br>
        &nbsp;&nbsp; <b>, (콤마)</b> 로 연결하세요
   </td>

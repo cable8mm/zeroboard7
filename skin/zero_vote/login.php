@@ -1,6 +1,6 @@
-<? 
+<?php
 	if(eregi(":\/\/",$dir)||eregi("\.\.",$dir)) $dir ="./";
-	include "$dir/value.php3"; 
+	include "$dir/value.php3";
 ?>
 <div align=center>
 <br><br><br>
@@ -23,7 +23,7 @@
 <tr height=1><td colspan=2 bgcolor=<?=$sC_dark1?>><img src=images/t.gif height=1></td></tr>
 <tr height=30>
   <td align=right align=center colspan=2 >
-      <input type=image border=0 align=absmiddle src=<?=$dir?>/images/btn_confirm.gif> 
+      <input type=image border=0 align=absmiddle src=<?=$dir?>/images/btn_confirm.gif>
       <img src=<?=$dir?>/images/btn_back.gif align=absmiddle border=0 onclick=history.go(-1) style=cursor:hand>
   </td>
 </tr>

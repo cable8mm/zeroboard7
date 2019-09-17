@@ -84,7 +84,7 @@
     check_submit();">
     <input type=hidden name=no value=<?php echo $data[no];?>>
     <input type=hidden name=exec value=view_board>
-    <input type=hidden name=exec2 value=<?if($no) echo"modify_ok"; else echo"add_ok";?>>
+    <input type=hidden name=exec2 value=<?php if($no) echo"modify_ok"; else echo"add_ok";?>>
     <input type=hidden name=page value=<?=$page?>>
     <input type=hidden name=s_page_num value=<?=$page_num?>>
     <input type=hidden name=group_no value=<?=$group_no?>>
@@ -490,10 +490,10 @@
           style=width:95%;border-color:#b0b0b0><?=$data[filter]?></textarea><br>
         &nbsp;&nbsp;
         불량단어 필터링 목록입니다. <b>, (콤마)</b> 로 연결하세요
-        <?if($member[is_admin]==1||$member[is_admin]==2){?>
+        <?php if($member[is_admin]==1||$member[is_admin]==2){?>
         <br> &nbsp;&nbsp;<input type=checkbox name=applyall_filter value=1
           onclick="alert('모든 게시판의 불량단어 내용이 위의 내용으로 변경됩니다')"> 모든 게시판에 적용하기
-        <?}?>
+        <?php }?>
       </td>
     </tr>
 
@@ -505,10 +505,10 @@
         &nbsp;&nbsp; HTML을 부분허용했을때 허용하여 주는 태그입니다.<br>
         &nbsp;&nbsp; &lt;,&gt;를 뺀 태그 이름만을 입력하세요.<br>
         &nbsp;&nbsp; <b>, (콤마)</b> 로 연결하세요
-        <?if($member[is_admin]==1||$member[is_admin]==2){?>
+        <?php if($member[is_admin]==1||$member[is_admin]==2){?>
         <br> &nbsp;&nbsp;<input type=checkbox name=applyall_tag value=1
           onclick="alert('모든 게시판의 허용 HTML 태그 내용이 위의 내용으로 변경됩니다')"> 모든 게시판에 적용하기
-        <?}?>
+        <?php }?>
       </td>
     </tr>
 
@@ -519,10 +519,10 @@
           style=width:95%;border-color:#b0b0b0><?=$data[avoid_ip]?></textarea>
         <br> &nbsp;&nbsp; 차단을 원하는 특정 아이피가 있을때 등록하세요.&nbsp;&nbsp; <b>, (콤마)</b> 로 연결하세요
         <br> &nbsp;&nbsp; 만약 123.456.789.* 등 123.456.789로 시작하는 IP 차단을 원하시면 123.456.789 만 적어주시면 됩니다
-        <?if($member[is_admin]==1||$member[is_admin]==2){?>
+        <?php if($member[is_admin]==1||$member[is_admin]==2){?>
         <br> &nbsp;&nbsp;<input type=checkbox name=applyall_ip value=1
           onclick="alert('모든 게시판의 IP차단 내용이 위의 내용으로 변경됩니다')"> 모든 게시판에 적용하기
-        <?}?>
+        <?php }?>
       </td>
     </tr>
 

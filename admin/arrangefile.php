@@ -32,7 +32,7 @@
 </tr>
 </table>
 </div>
-<?flush()?>
+<?php flush()?>
 <pre>
 <?php
 	$result = mysql_query("select * from $admin_table order by name") or die(mysql_error());

@@ -27,7 +27,7 @@
 	if($status) {
 		$_str = trim(zReadFile("data/now_member_connect.php"));
 		if($_str) {
-			$_str = str_replace("<? die('Access Denied');/*","",$_str);
+			$_str = str_replace("<?php  die('Access Denied');/*","",$_str);
 			$_str = str_replace("*/?>","",$_str);
 			$_connector = explode(":",$_str);
 
@@ -141,7 +141,7 @@
   <td width=35%><img src=images/memo_level.gif></td>
   <td width=25%><img src=images/memo_id.gif></td>
   <td width=25%><img src=images/memo_name.gif></td>
-  <?if($status){?><td width=15%><img src=images/memo_status.gif></td><?}?>
+  <?php if($status){?><td width=15%><img src=images/memo_status.gif></td><?php }?>
 </tr>
 
 <?php
@@ -184,7 +184,7 @@
         </tr>
 
 <tr align=center>
-<? $checked[$status]="checked"; ?>
+<?php  $checked[$status]="checked"; ?>
   <td colspan=5 height=30>
      <table border=0 align=center cellpadding=0 cellspacing=0>
      <tr>

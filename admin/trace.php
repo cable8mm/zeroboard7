@@ -60,12 +60,12 @@
   <Table border=0>
 	<tr>
   	<td style=line-height:180% height=40 align=right>
-  		<input type=checkbox name=keykind[0] value="name" <?if($keykind[0]) echo"checked";?>> 이름 &nbsp;
-  		<input type=checkbox name=keykind[1] value="email" <?if($keykind[1]) echo"checked";?>> E-Mail &nbsp;
-  		<input type=checkbox name=keykind[2] value="ip" <?if($keykind[2]) echo"checked";?>> 아이피 &nbsp;
-  		<input type=checkbox name=keykind[3] value="subject" <?if($keykind[3]) echo"checked";?>> 제목 &nbsp;
-  		<input type=checkbox name=keykind[4] value="memo" <?if($keykind[4]) echo"checked";?>> 내용 &nbsp;
-  		<input type=checkbox name=keykind[5] value="ismember" <?if($keykind[5]) echo"checked";?>> 아이디 &nbsp;
+  		<input type=checkbox name=keykind[0] value="name" <?php if($keykind[0]) echo"checked";?>> 이름 &nbsp;
+  		<input type=checkbox name=keykind[1] value="email" <?php if($keykind[1]) echo"checked";?>> E-Mail &nbsp;
+  		<input type=checkbox name=keykind[2] value="ip" <?php if($keykind[2]) echo"checked";?>> 아이피 &nbsp;
+  		<input type=checkbox name=keykind[3] value="subject" <?php if($keykind[3]) echo"checked";?>> 제목 &nbsp;
+  		<input type=checkbox name=keykind[4] value="memo" <?php if($keykind[4]) echo"checked";?>> 내용 &nbsp;
+  		<input type=checkbox name=keykind[5] value="ismember" <?php if($keykind[5]) echo"checked";?>> 아이디 &nbsp;
   	</td>
   	<td><input type=text name=keyword value="<?=$s_keyword?>" size=20 class=input>&nbsp;</td>
   	<td><input type=image src=../images/trace_search.gif border=0 valign=absmiddle></td>

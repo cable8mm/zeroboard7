@@ -1,7 +1,7 @@
-<? 
+<?php
   /*
   이 파일은 게시판에서 상단의 상태를 보여줍니다.
-  
+
   <?=$width?> : 게시판의 가로크기
   <?=$dir?> : 스킨디렉토리를 가리킵니다.
   <?=$total?> : 전체 글수
@@ -23,7 +23,7 @@
   * 쪽지아이콘은 member_memo_on.gif, member_memo_off.gif 파일이 있습니다. (기본)
     member_memo_on.gif는 새로운 쪽지가 있을때, 글고 member_memo_off.gif는 새쪽지가 없을때입니다;;
 
-  */ 
+  */
 ?>
 <script language=JavaScript>
 function findObj(n, d) { //v4.0
@@ -39,9 +39,9 @@ function swapImage() {
 }
 </script>
 <!-- HTML 시작 -->
-<? 
+<?php
 	if(eregi(":\/\/",$dir)||eregi("\.\.",$dir)) $dir ="./";
-	include "$dir/value.php3"; 
+	include "$dir/value.php3";
 ?>
 <table border=0 cellspacing=0 cellpadding=0 width=<?=$width?>>
 <?=$memo_on_sound?>
@@ -62,4 +62,4 @@ function swapImage() {
   </td>
 </tr>
 </table>
-  
+

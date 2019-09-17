@@ -33,8 +33,8 @@
 ?>
 
 <script>
-<?if($href){?>
+<?php if($href){?>
 	window.open('<?=$href?>');
-<?}?>
+<?php }?>
 	window.close();
 </script>

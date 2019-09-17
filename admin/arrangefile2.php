@@ -29,7 +29,7 @@
 </tr>
 </table>
 </div>
-<?flush()?>
+<?php flush()?>
 
 <pre>
 

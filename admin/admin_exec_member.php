@@ -170,7 +170,7 @@
 				@chmod($path,0707);
 			}
 
-			zWriteFile("icon/member_image_box/".$member_no."_maxsize.php","<?/*".$maxdirsize."*/?>");
+			zWriteFile("icon/member_image_box/".$member_no."_maxsize.php","<?php /*".$maxdirsize."*/?>");
 		}
 
 		// 이름앞에 붙는 아이콘 삭제시

@@ -54,7 +54,7 @@
 </tr>
 </table>
 </div>
-<?flush()?>
+<?php flush()?>
 
 	<div align=center>
 	<form name=sdc action=<?=$PHP_SELF?> method=post>

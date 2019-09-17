@@ -58,7 +58,7 @@
 		$maxDirSize = 100*1024;
 	} else {
 		// 파일의 주석처리 제거
-		$maxDirSize = str_replace("<?/*","",$maxDirSize);
+		$maxDirSize = str_replace("<?php /*","",$maxDirSize);
 		$maxDirSize = str_replace("*/?>","",$maxDirSize);
 	}
 

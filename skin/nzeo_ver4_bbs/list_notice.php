@@ -13,4 +13,4 @@
 	<td nowrap class=list_eng><?=$hit?></td>
 </tr>
 
-<?$coloring++;?>
+<?php $coloring++;?>

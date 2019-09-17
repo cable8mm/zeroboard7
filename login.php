@@ -48,7 +48,7 @@
 </script>
 
 <form method=post action=login_check.php onsubmit="return check_submit();" name=login>
-<input type=hidden name=auto_login value=<?if(!$autologin[ok])echo"0";else echo"1"?>>
+<input type=hidden name=auto_login value=<?php if(!$autologin[ok])echo"0";else echo"1"?>>
 <input type=hidden name=page value=<?=$page?>>
 <input type=hidden name=id value=<?=$id?>>
 <input type=hidden name=no value=<?=$no?>>

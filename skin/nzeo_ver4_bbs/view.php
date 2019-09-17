@@ -56,7 +56,7 @@
 <img src=<?=$dir?>/t.gif border=0 height=2><br>
 
 
-<?if($member['level']<=$setup['grant_comment']){?>
+<?php if($member['level']<=$setup['grant_comment']){?>
 <?=$hide_comment_start?>
 <table border=0 cellspacing=0 cellpadding=0 height=1 width=<?=$width?>>
 <tr><td height=1 class=line1 style=height:1px><img src=<?=$dir?>/t.gif border=0 height=1></td></tr>
@@ -79,4 +79,4 @@
 </table>
 <img src=/images/t.gif border=0 height=8><br>
 <?=$hide_comment_end?>
-<?}?>
+<?php }?>
